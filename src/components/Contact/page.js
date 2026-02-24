@@ -2,28 +2,35 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+} from "react-icons/fi";
 import axios from "axios";
 
-const contactInfo = [
+const info = [
   {
-    icon: "📧",
+    icon: FiMail,
     label: "Email",
-    value: "rafiqul@example.com",
-    href: "mailto:rafiqul@example.com",
+    val: "rafiqul@example.com",
+    color: "#818cf8",
   },
   {
-    icon: "📱",
+    icon: FiPhone,
     label: "Phone",
-    value: "+880 1234-567890",
-    href: "tel:+8801234567890",
+    val: "+880 1234-567890",
+    color: "var(--orange)",
   },
-  { icon: "📍", label: "Location", value: "Dhaka, Bangladesh", href: "#" },
-];
-
-const socials = [
-  { icon: "⌥", label: "GitHub", href: "https://github.com/" },
-  { icon: "in", label: "LinkedIn", href: "https://linkedin.com/" },
-  { icon: "𝕏", label: "Twitter", href: "https://twitter.com/" },
+  {
+    icon: FiMapPin,
+    label: "Location",
+    val: "Dhaka, Bangladesh",
+    color: "#34d399",
+  },
 ];
 
 export default function Contact() {
@@ -34,10 +41,7 @@ export default function Contact() {
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
-
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const [status, setStatus] = useState("idle");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,209 +58,240 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28">
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+    <section
+      id="contact"
+      className="py-24 relative overflow-hidden"
+      style={{ background: "var(--soft)" }}
+      ref={ref}
+    >
+      {/* Watercolor */}
+      <div className="absolute top-0 left-0 w-[350px] h-[280px] pointer-events-none">
+        <div
+          className="blob absolute w-[200px] h-[160px] top-4 left-4"
+          style={{ background: "var(--wc-teal)", opacity: 0.22 }}
+        />
+        <div
+          className="blob absolute w-[170px] h-[130px] top-16 left-20"
+          style={{ background: "var(--wc-green)", opacity: 0.18 }}
+        />
+      </div>
+      <div className="absolute bottom-0 right-0 w-[320px] h-[240px] pointer-events-none">
+        <div
+          className="blob absolute w-[180px] h-[140px] bottom-6 right-6"
+          style={{ background: "var(--wc-purple)", opacity: 0.2 }}
+        />
+        <div
+          className="blob absolute w-[150px] h-[120px] bottom-16 right-20"
+          style={{ background: "var(--wc-pink)", opacity: 0.18 }}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
         >
-          <div className="section-label mx-auto w-fit">Contact</div>
+          <div className="sec-tag">Get In Touch</div>
           <h2
-            className="font-syne font-bold"
-            style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
+            className="font-display font-bold"
+            style={{ fontSize: "clamp(28px,4vw,44px)", color: "var(--ink)" }}
           >
-            Let's <span className="grad-text">work together</span>
+            Let's Work Together
           </h2>
           <p
-            className="text-sm mt-4 max-w-md mx-auto"
-            style={{ color: "var(--muted)", lineHeight: 1.8 }}
+            className="text-sm mt-3 max-w-md mx-auto"
+            style={{ color: "var(--muted)" }}
           >
-            Have a project in mind or just want to say hello? I'd love to hear
-            from you.
+            Have a project in mind? I'd love to hear about it. Drop me a message
+            and let's create something amazing.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          {/* Left — info */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+          {/* Left */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -28 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-2 space-y-6"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-2 space-y-5"
           >
-            {/* Info cards */}
-            {contactInfo.map((info, i) => (
-              <motion.a
+            {info.map((item, i) => (
+              <motion.div
                 key={i}
-                href={info.href}
-                whileHover={{ x: 4, transition: { duration: 0.2 } }}
-                className="glass rounded-2xl p-5 flex items-center gap-4 cursor-pointer block"
+                whileHover={{ x: 4 }}
+                className="flex items-center gap-4 p-4 rounded-2xl"
+                style={{
+                  background: "#fff",
+                  border: "1px solid var(--border)",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                }}
               >
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-                  style={{
-                    background: "rgba(129,140,248,0.1)",
-                    border: "1px solid rgba(129,140,248,0.2)",
-                  }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: `${item.color}14` }}
                 >
-                  {info.icon}
+                  <item.icon size={18} style={{ color: item.color }} />
                 </div>
                 <div>
                   <div
-                    className="text-xs mb-0.5"
+                    className="text-xs font-body mb-0.5"
                     style={{ color: "var(--muted)" }}
                   >
-                    {info.label}
+                    {item.label}
                   </div>
                   <div
-                    className="text-sm font-medium"
-                    style={{ color: "var(--light)" }}
+                    className="text-sm font-semibold font-display"
+                    style={{ color: "var(--ink)" }}
                   >
-                    {info.value}
+                    {item.val}
                   </div>
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
 
-            {/* Social links */}
-            <div className="glass rounded-2xl p-5">
+            {/* Socials */}
+            <div
+              className="p-5 rounded-2xl"
+              style={{
+                background: "#fff",
+                border: "1px solid var(--border)",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+              }}
+            >
               <div
-                className="text-xs mb-4 tracking-widest"
+                className="text-xs font-bold font-display mb-4"
                 style={{ color: "var(--muted)" }}
               >
                 FIND ME ON
               </div>
               <div className="flex gap-3">
-                {socials.map((s) => (
+                {[FiGithub, FiLinkedin, FiTwitter].map((Icon, i) => (
                   <motion.a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    key={i}
+                    href="#"
                     whileHover={{ scale: 1.1, y: -2 }}
-                    className="flex-1 py-3 rounded-xl text-center text-sm font-bold transition-all"
-                    style={{
-                      background: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      color: "var(--muted)",
-                    }}
+                    className="social-icon flex-1 rounded-xl"
+                    style={{ borderRadius: "12px" }}
                   >
-                    {s.icon}
+                    <Icon size={17} />
                   </motion.a>
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Right — form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
+          {/* Form */}
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, x: 28 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="lg:col-span-3"
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="lg:col-span-3 p-8 rounded-2xl space-y-5"
+            style={{
+              background: "#fff",
+              border: "1px solid var(--border)",
+              boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+            }}
           >
-            <form
-              onSubmit={handleSubmit}
-              className="glass rounded-2xl p-8 space-y-5"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label
-                    className="block text-xs mb-2"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Rafiqul Islam"
-                    className="input-field"
-                  />
-                </div>
-                <div>
-                  <label
-                    className="block text-xs mb-2"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="hello@example.com"
-                    className="input-field"
-                  />
-                </div>
-              </div>
-
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label
-                  className="block text-xs mb-2"
+                  className="block text-xs font-semibold font-display mb-2"
                   style={{ color: "var(--muted)" }}
                 >
-                  Subject
+                  Your Name
                 </label>
                 <input
-                  name="subject"
-                  value={form.subject}
-                  onChange={handleChange}
+                  name="name"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
-                  placeholder="Project Collaboration"
-                  className="input-field"
+                  placeholder="Rafiqul Islam"
+                  className="form-input"
                 />
               </div>
-
               <div>
                 <label
-                  className="block text-xs mb-2"
+                  className="block text-xs font-semibold font-display mb-2"
                   style={{ color: "var(--muted)" }}
                 >
-                  Message
+                  Email Address
                 </label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
+                <input
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
                   required
-                  rows={5}
-                  placeholder="Tell me about your project..."
-                  className="input-field"
-                  style={{ resize: "vertical" }}
+                  placeholder="hello@example.com"
+                  className="form-input"
                 />
               </div>
-
-              <motion.button
-                type="submit"
-                disabled={status === "loading"}
-                whileHover={{ scale: status === "loading" ? 1 : 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 rounded-xl text-sm font-semibold transition-all"
-                style={{
-                  background:
-                    status === "success"
-                      ? "linear-gradient(135deg, #34d399, #059669)"
-                      : status === "error"
-                        ? "linear-gradient(135deg, #f472b6, #db2777)"
-                        : "linear-gradient(135deg, #818cf8, #34d399)",
-                  color: "#07071a",
-                  opacity: status === "loading" ? 0.7 : 1,
-                }}
+            </div>
+            <div>
+              <label
+                className="block text-xs font-semibold font-display mb-2"
+                style={{ color: "var(--muted)" }}
               >
-                {status === "loading" && "Sending..."}
-                {status === "success" && "✓ Message Sent!"}
-                {status === "error" && "✕ Failed — Try again"}
-                {status === "idle" && "Send Message ✉️"}
-              </motion.button>
-            </form>
-          </motion.div>
+                Subject
+              </label>
+              <input
+                name="subject"
+                value={form.subject}
+                onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                required
+                placeholder="Project Collaboration"
+                className="form-input"
+              />
+            </div>
+            <div>
+              <label
+                className="block text-xs font-semibold font-display mb-2"
+                style={{ color: "var(--muted)" }}
+              >
+                Message
+              </label>
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                required
+                rows={5}
+                placeholder="Tell me about your project..."
+                className="form-input"
+                style={{ resize: "vertical" }}
+              />
+            </div>
+
+            <motion.button
+              type="submit"
+              whileHover={{ scale: status === "loading" ? 1 : 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              disabled={status === "loading"}
+              className="w-full py-4 rounded-xl text-sm font-bold font-display transition-all"
+              style={{
+                background:
+                  status === "success"
+                    ? "#34d399"
+                    : status === "error"
+                      ? "#f87171"
+                      : "var(--orange)",
+                color: "#fff",
+                boxShadow: "0 6px 24px rgba(255,107,43,0.28)",
+                opacity: status === "loading" ? 0.75 : 1,
+              }}
+            >
+              {status === "loading"
+                ? "Sending..."
+                : status === "success"
+                  ? "✓ Message Sent!"
+                  : status === "error"
+                    ? "✕ Try Again"
+                    : "Send Message ✉️"}
+            </motion.button>
+          </motion.form>
         </div>
       </div>
     </section>

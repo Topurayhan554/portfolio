@@ -1,137 +1,224 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
-const cards = [
-  {
-    icon: "🎓",
-    title: "Education",
-    desc: "B.Sc. in Computer Science & Engineering. Strong foundation in algorithms, data structures, and software design.",
-    color: "#818cf8",
-  },
-  {
-    icon: "💼",
-    title: "Experience",
-    desc: "3+ years building scalable web apps. Collaborated with startups and established companies across e-commerce, SaaS, and fintech.",
-    color: "#34d399",
-  },
-  {
-    icon: "🌍",
-    title: "Location",
-    desc: "Based in Dhaka, Bangladesh. Open to remote opportunities worldwide and on-site collaborations.",
-    color: "#f472b6",
-  },
-  {
-    icon: "🎯",
-    title: "Philosophy",
-    desc: "I believe great software is a blend of clean code, thoughtful UX, and measurable business impact.",
-    color: "#fbbf24",
-  },
-];
+import Image from "next/image";
 
 export default function About() {
-  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
 
   return (
     <section
       id="about"
-      className="py-28"
-      style={{ background: "var(--surface)" }}
+      className="py-24 relative overflow-hidden"
+      style={{ background: "var(--soft)" }}
+      ref={ref}
     >
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="mb-16"
-        >
-          <div className="section-label">About Me</div>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-            <h2
-              className="font-syne font-bold"
-              style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
-            >
-              Passionate about <span className="grad-text">building</span>
-              <br />
-              great experiences
-            </h2>
-            <p
-              className="max-w-md text-sm leading-relaxed"
-              style={{ color: "var(--muted)" }}
-            >
-              I'm a full stack developer who loves crafting elegant solutions.
-              When I'm not coding, I'm exploring new technologies, contributing
-              to open source, or writing about web development.
-            </p>
-          </div>
-        </motion.div>
+      {/* Watercolor accent */}
+      <div className="absolute top-0 right-0 w-[400px] h-[300px] pointer-events-none">
+        <div
+          className="blob absolute w-[220px] h-[180px] top-4 right-8"
+          style={{ background: "var(--wc-pink)", opacity: 0.25 }}
+        />
+        <div
+          className="blob absolute w-[180px] h-[150px] top-16 right-24"
+          style={{ background: "var(--wc-yellow)", opacity: 0.22 }}
+        />
+      </div>
+      <div className="absolute bottom-0 left-0 w-[300px] h-[200px] pointer-events-none">
+        <div
+          className="blob absolute w-[180px] h-[140px] bottom-4 left-8"
+          style={{ background: "var(--wc-teal)", opacity: 0.2 }}
+        />
+      </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-          {cards.map((card, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.1,
-                ease: [0.22, 1, 0.36, 1],
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* LEFT — Image with overlays */}
+          <motion.div
+            initial={{ opacity: 0, x: -36 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
+          >
+            {/* Big decorative number */}
+            <div
+              className="absolute -top-8 -left-4 font-display font-bold select-none pointer-events-none"
+              style={{
+                fontSize: "160px",
+                lineHeight: 1,
+                color: "var(--orange)",
+                opacity: 0.07,
+                zIndex: 0,
               }}
-              whileHover={{ y: -6, transition: { duration: 0.25 } }}
-              className="glass rounded-2xl p-6 cursor-default group"
-              style={{ borderColor: "rgba(255,255,255,0.05)" }}
+            >
+              6
+            </div>
+
+            {/* Image container */}
+            <div
+              className="relative rounded-3xl overflow-hidden"
+              style={{
+                height: "420px",
+                background:
+                  "linear-gradient(135deg, rgba(255,182,193,0.4) 0%, rgba(197,162,255,0.35) 50%, rgba(147,210,255,0.3) 100%)",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.1)",
+              }}
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 transition-transform group-hover:scale-110"
-                style={{
-                  background: `${card.color}18`,
-                  border: `1px solid ${card.color}30`,
-                }}
-              >
-                {card.icon}
-              </div>
-              <h3
-                className="font-syne font-bold text-base mb-2"
-                style={{ color: card.color }}
-              >
-                {card.title}
-              </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "var(--muted)" }}
-              >
-                {card.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+                className="blob absolute w-52 h-40 top-4 left-4"
+                style={{ background: "var(--wc-coral)", opacity: 0.45 }}
+              />
+              <div
+                className="blob absolute w-44 h-36 bottom-8 right-6"
+                style={{ background: "var(--wc-blue)", opacity: 0.4 }}
+              />
 
-        {/* Bottom strip — fun facts */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="glass rounded-2xl p-8"
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {[
-              { n: "3+", l: "Years of Experience" },
-              { n: "25+", l: "Projects Completed" },
-              { n: "15+", l: "Happy Clients" },
-              { n: "∞", l: "Lines of Code" },
-            ].map(({ n, l }) => (
-              <div key={l}>
-                <div className="font-syne font-bold text-4xl mb-1 grad-text">
-                  {n}
-                </div>
-                <div className="text-sm" style={{ color: "var(--muted)" }}>
-                  {l}
-                </div>
+              {/* Photo placeholder */}
+              <div className="w-full h-full flex items-center justify-center relative z-10">
+                <span style={{ fontSize: "120px" }}>👨‍💼</span>
+                <Image
+                  src="/topu.png"
+                  alt="Topu"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "top" }}
+                />
               </div>
-            ))}
-          </div>
-        </motion.div>
+
+              {/* Floating stat overlay — years */}
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute top-6 -right-6 glass-card px-4 py-3 z-20"
+              >
+                <div
+                  className="font-display font-bold text-2xl leading-none"
+                  style={{ color: "var(--orange)" }}
+                >
+                  1
+                </div>
+                <div
+                  className="text-xs font-body mt-0.5"
+                  style={{ color: "var(--muted)" }}
+                >
+                  Years of
+                  <br />
+                  Success
+                </div>
+              </motion.div>
+
+              {/* Floating stat overlay — projects */}
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+                className="absolute bottom-8 -right-6 glass-card px-4 py-3 z-20"
+              >
+                <div
+                  className="font-display font-bold text-2xl leading-none"
+                  style={{ color: "var(--ink)" }}
+                >
+                  0K{" "}
+                  <span
+                    className="text-xs font-medium"
+                    style={{ color: "var(--muted)" }}
+                  >
+                    Total
+                    <br />
+                    Projects
+                  </span>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* RIGHT — Text */}
+          <motion.div
+            initial={{ opacity: 0, x: 36 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{
+              duration: 0.75,
+              delay: 0.15,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <div className="sec-tag">I'm a Developer</div>
+            <h2
+              className="font-display font-bold mb-5 leading-tight"
+              style={{
+                fontSize: "clamp(28px, 4vw, 44px)",
+                color: "var(--ink)",
+              }}
+            >
+              I Can Build Anything
+              <br />
+              <span style={{ color: "var(--orange)" }}>You Want</span>
+            </h2>
+            <p
+              className="text-sm leading-relaxed mb-6"
+              style={{ color: "var(--muted)" }}
+            >
+              Hello! I'm a full stack web developer, and I'm very passionate and
+              dedicated to my work. With 3+ years of experience, I have acquired
+              the skills and knowledge necessary to make your project a success.
+              I enjoy every step of the process, from discussion to deployment.
+            </p>
+            <p
+              className="text-sm leading-relaxed mb-8"
+              style={{ color: "var(--muted)" }}
+            >
+              I specialize in{" "}
+              <strong style={{ color: "var(--ink)" }}>
+                React, Next.js, Node.js
+              </strong>
+              , and modern web technologies. I believe in writing clean,
+              maintainable code that scales with your business.
+            </p>
+
+            {/* Stats row */}
+            <div className="flex gap-8 mb-8 flex-wrap">
+              {[
+                ["3+", "Years Exp."],
+                ["25+", "Projects"],
+                ["15+", "Clients"],
+                ["5★", "Reviews"],
+              ].map(([n, l]) => (
+                <div key={l} className="text-center">
+                  <div
+                    className="font-display font-bold text-2xl"
+                    style={{ color: "var(--orange)" }}
+                  >
+                    {n}
+                  </div>
+                  <div
+                    className="text-xs mt-1 font-body"
+                    style={{ color: "var(--muted)" }}
+                  >
+                    {l}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <button
+              className="btn-orange"
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Hire Me →
+            </button>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -4,34 +4,34 @@ import { useInView } from "react-intersection-observer";
 
 const posts = [
   {
-    title: "Building Scalable APIs with Node.js and Express",
-    excerpt:
-      "A deep dive into building production-ready REST APIs with proper error handling, rate limiting, and authentication.",
     tag: "Backend",
-    date: "Jan 15, 2025",
-    readTime: "8 min read",
-    color: "#818cf8",
     emoji: "⚙️",
+    tagColor: "#818cf8",
+    title: "Building Scalable APIs with Node.js",
+    excerpt:
+      "Production-ready REST APIs with proper error handling, rate limiting, and JWT authentication.",
+    date: "Jan 15, 2025",
+    read: "8 min read",
   },
   {
-    title: "Mastering React Server Components in Next.js 14",
-    excerpt:
-      "Everything you need to know about RSC, streaming, and the app router to build blazing-fast Next.js applications.",
     tag: "Frontend",
-    date: "Feb 3, 2025",
-    readTime: "12 min read",
-    color: "#34d399",
     emoji: "⚛️",
+    tagColor: "var(--orange)",
+    title: "React Server Components in Next.js 14",
+    excerpt:
+      "Everything about RSC, streaming, and the app router to build blazing-fast applications.",
+    date: "Feb 3, 2025",
+    read: "12 min read",
   },
   {
-    title: "Database Design Patterns for Modern Web Apps",
-    excerpt:
-      "Comparing SQL vs NoSQL trade-offs, indexing strategies, and when to use Redis caching effectively.",
     tag: "Database",
-    date: "Feb 18, 2025",
-    readTime: "10 min read",
-    color: "#f472b6",
     emoji: "🗄️",
+    tagColor: "#34d399",
+    title: "Database Design for Modern Web Apps",
+    excerpt:
+      "SQL vs NoSQL, indexing strategies, and when to use Redis caching for peak performance.",
+    date: "Feb 18, 2025",
+    read: "10 min read",
   },
 ];
 
@@ -41,85 +41,106 @@ export default function Blog() {
   return (
     <section
       id="blog"
-      className="py-28"
-      style={{ background: "var(--surface)" }}
+      className="py-24 relative overflow-hidden"
+      style={{ background: "#fff" }}
+      ref={ref}
     >
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+      {/* Watercolor */}
+      <div className="absolute bottom-0 right-0 w-[360px] h-[260px] pointer-events-none">
+        <div
+          className="blob absolute w-[190px] h-[150px] bottom-6 right-8"
+          style={{ background: "var(--wc-yellow)", opacity: 0.22 }}
+        />
+        <div
+          className="blob absolute w-[160px] h-[130px] bottom-16 right-24"
+          style={{ background: "var(--wc-coral)", opacity: 0.18 }}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 gap-4"
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between mb-12"
         >
           <div>
-            <div className="section-label">Blog</div>
+            <div className="sec-tag">Blog</div>
             <h2
-              className="font-syne font-bold"
-              style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
+              className="font-display font-bold"
+              style={{ fontSize: "clamp(28px,4vw,44px)", color: "var(--ink)" }}
             >
-              Latest <span className="grad-text">articles</span>
+              Latest Articles
             </h2>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-6 py-3 rounded-xl text-sm font-semibold glass border"
-            style={{
-              color: "var(--accent)",
-              borderColor: "rgba(129,140,248,0.25)",
-            }}
-          >
+          <button className="btn-orange-outline mt-4 md:mt-0 self-start">
             View All Posts →
-          </motion.button>
+          </button>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {posts.map((post, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+          {posts.map((p, i) => (
             <motion.article
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              whileHover={{ y: -6, transition: { duration: 0.25 } }}
-              className="glass rounded-2xl p-7 cursor-pointer group flex flex-col"
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="rounded-2xl border overflow-hidden cursor-pointer group"
+              style={{
+                borderColor: "var(--border)",
+                background: "#fff",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+              }}
             >
-              <div className="flex items-center justify-between mb-6">
-                <span
-                  className="text-xs font-semibold px-3 py-1.5 rounded-lg"
-                  style={{
-                    background: `${post.color}15`,
-                    border: `1px solid ${post.color}30`,
-                    color: post.color,
-                  }}
-                >
-                  {post.tag}
-                </span>
-                <span className="text-2xl">{post.emoji}</span>
-              </div>
-
-              <h3
-                className="font-syne font-bold text-base mb-3 leading-snug group-hover:text-accent transition-colors"
-                style={{ color: "var(--light)" }}
-              >
-                {post.title}
-              </h3>
-              <p
-                className="text-sm leading-relaxed mb-6 flex-1"
-                style={{ color: "var(--muted)" }}
-              >
-                {post.excerpt}
-              </p>
-
+              {/* Top color bar */}
               <div
-                className="flex items-center justify-between pt-4"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-              >
-                <span className="text-xs" style={{ color: "var(--muted)" }}>
-                  {post.date}
-                </span>
-                <span className="text-xs" style={{ color: "var(--muted)" }}>
-                  {post.readTime}
-                </span>
+                className="h-1.5 w-full"
+                style={{ background: p.tagColor }}
+              />
+
+              <div className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <span
+                    className="text-xs font-bold font-display px-3 py-1 rounded-full"
+                    style={{
+                      background: `${p.tagColor}14`,
+                      color: p.tagColor,
+                      border: `1px solid ${p.tagColor}30`,
+                    }}
+                  >
+                    {p.tag}
+                  </span>
+                  <span style={{ fontSize: "24px" }}>{p.emoji}</span>
+                </div>
+
+                <h3
+                  className="font-display font-bold text-base leading-snug mb-3 group-hover:text-orange-DEFAULT transition-colors"
+                  style={{ color: "var(--ink)" }}
+                >
+                  {p.title}
+                </h3>
+                <p
+                  className="text-xs leading-relaxed mb-5"
+                  style={{ color: "var(--muted)" }}
+                >
+                  {p.excerpt}
+                </p>
+
+                <div
+                  className="flex items-center justify-between pt-4"
+                  style={{ borderTop: "1px solid var(--border)" }}
+                >
+                  <span className="text-xs" style={{ color: "var(--muted)" }}>
+                    {p.date}
+                  </span>
+                  <span
+                    className="text-xs font-semibold font-display"
+                    style={{ color: p.tagColor }}
+                  >
+                    {p.read}
+                  </span>
+                </div>
               </div>
             </motion.article>
           ))}
