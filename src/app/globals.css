@@ -5,22 +5,181 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root,
+[data-theme="dark"] {
+  --bg: #07071a;
+  --surface: #0d0d2b;
+  --card: #111130;
+  --accent: #818cf8;
+  --accent-2: #34d399;
+  --accent-3: #f472b6;
+  --accent-pill: rgba(129, 140, 248, 0.1);
+  --muted: #64648a;
+  --light: #c4c4e0;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-solid: rgba(255, 255, 255, 0.2);
+  --nav-bg: rgba(7, 7, 26, 0.9);
+  --mobile-menu-bg: rgba(7, 7, 26, 0.97);
+  --card-bg: rgba(17, 17, 48, 0.7);
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --input-border: rgba(255, 255, 255, 0.08);
+  --grid-color: rgba(129, 140, 248, 0.04);
+}
+/* ── Light theme ────────────────────────────────────── */
+[data-theme="light"] {
+  --bg: #f5f5ff;
+  --surface: #eeeeff;
+  --card: #ffffff;
+  --accent: #6366f1;
+  --accent-2: #059669;
+  --accent-3: #db2777;
+  --accent-pill: rgba(99, 102, 241, 0.1);
+  --muted: #6b7280;
+  --light: #111827;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-solid: rgba(0, 0, 0, 0.2);
+  --nav-bg: rgba(245, 245, 255, 0.92);
+  --mobile-menu-bg: rgba(245, 245, 255, 0.98);
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --input-bg: rgba(0, 0, 0, 0.03);
+  --input-border: rgba(0, 0, 0, 0.1);
+  --grid-color: rgba(99, 102, 241, 0.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--light);
+  font-family: var(--font-jakarta), sans-serif;
+  overflow-x: hidden;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-syne), sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(129, 140, 248, 0.25);
+}
+
+/* Grid background */
+.grid-pattern {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Glass card */
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* Noise overlay */
+.noise::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.3;
+}
+
+/* Glow utilities */
+.glow-accent {
+  box-shadow: 0 0 40px rgba(129, 140, 248, 0.2);
+}
+.glow-text {
+  text-shadow: 0 0 40px rgba(129, 140, 248, 0.5);
+}
+
+/* Section label */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(129, 140, 248, 0.08);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  color: var(--accent);
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(135deg, #818cf8, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Input styles */
+.input-field {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--light);
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-family: var(--font-jakarta), sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color 0.3s,
+    background 0.3s;
+}
+.input-field:focus {
+  border-color: var(--accent);
+  background: rgba(129, 140, 248, 0.05);
+}
+.input-field::placeholder {
+  color: var(--muted);
+}
+
+/* Smooth theme transition on all elements */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+/* But don't apply to animations */
+.no-transition,
+motion.div {
+  transition: none;
 }
