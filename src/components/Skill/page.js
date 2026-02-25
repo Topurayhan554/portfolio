@@ -1,7 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import { FaGitAlt, FaDocker, FaAws, FaLinux } from "react-icons/fa";
+import { SiFigma, SiPostman, SiVercel } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 const skills = [
   { name: "React / Next.js", level: 92, color: "#818cf8" },
   { name: "JavaScript / TypeScript", level: 88, color: "var(--orange)" },
@@ -12,14 +14,14 @@ const skills = [
 ];
 
 const tools = [
-  { name: "VS Code", icon: "📝", color: "#007acc" },
-  { name: "Figma", icon: "🎨", color: "#f24e1e" },
-  { name: "Git", icon: "⎇", color: "#f05032" },
-  { name: "Docker", icon: "🐳", color: "#2496ed" },
-  { name: "Postman", icon: "📬", color: "#ff6c37" },
-  { name: "AWS", icon: "☁️", color: "#ff9900" },
-  { name: "Vercel", icon: "△", color: "#818cf8" },
-  { name: "Linux", icon: "🐧", color: "#fcc624" },
+  { name: "VS Code", Icon: VscVscode, color: "#007acc" },
+  { name: "Figma", Icon: SiFigma, color: "#f24e1e" },
+  { name: "Git", Icon: FaGitAlt, color: "#f05032" },
+  { name: "Docker", Icon: FaDocker, color: "#2496ed" },
+  { name: "Postman", Icon: SiPostman, color: "#ff6c37" },
+  { name: "AWS", Icon: FaAws, color: "#ff9900" },
+  { name: "Vercel", Icon: SiVercel, color: "#818cf8" },
+  { name: "Linux", Icon: FaLinux, color: "#fcc624" },
 ];
 
 export default function Skills() {
@@ -35,7 +37,7 @@ export default function Skills() {
       {/* Watercolor accents */}
       <div className="absolute top-0 left-0 w-[300px] h-[250px] pointer-events-none">
         <div
-          className="blob absolute w-[180px] h-[140px] top-8  left-6"
+          className="blob absolute w-[180px] h-[140px] top-8 left-6"
           style={{ background: "var(--wc-green)", opacity: 1 }}
         />
         <div
@@ -135,17 +137,36 @@ export default function Skills() {
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.06 }}
-                  whileHover={{ y: -4, scale: 1.06 }}
-                  className="flex flex-col items-center gap-2 p-4 rounded-xl border cursor-default text-center"
+                  whileHover={{
+                    y: -6,
+                    scale: 1.08,
+                    boxShadow: `0 12px 28px ${t.color}33`,
+                    borderColor: `${t.color}88`,
+                  }}
+                  whileTap={{ scale: 0.96 }}
+                  className="group flex flex-col items-center gap-2 p-4 rounded-xl border cursor-default text-center transition-colors duration-200"
                   style={{
                     background: "var(--card)",
                     borderColor: "var(--border)",
                     boxShadow: "var(--shadow-sm)",
                   }}
                 >
-                  <span style={{ fontSize: "24px" }}>{t.icon}</span>
+                  {/* Icon wrapper — lights up on hover */}
+                  <motion.span
+                    className="flex items-center justify-center w-10 h-10 rounded-lg"
+                    style={{
+                      background: `${t.color}18`,
+                      color: t.color,
+                      fontSize: "22px",
+                      transition: "background 0.2s, color 0.2s",
+                    }}
+                    whileHover={{ background: `${t.color}30` }}
+                  >
+                    <t.Icon />
+                  </motion.span>
+
                   <span
-                    className="text-xs font-semibold font-display"
+                    className="text-xs font-semibold font-display leading-tight"
                     style={{ color: "var(--muted)" }}
                   >
                     {t.name}

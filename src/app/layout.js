@@ -16,8 +16,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: "Rafiqul Islam — Full Stack Developer",
-  description: "Portfolio of Rafiqul Islam — Full Stack Developer",
+  title: "Topu Rayhan — Full Stack Developer",
+  description: "Portfolio of Topu Rayhan — Full Stack Developer",
 };
 
 export default function RootLayout({ children }) {

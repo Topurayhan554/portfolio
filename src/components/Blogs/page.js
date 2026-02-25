@@ -1,11 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { FaServer, FaReact, FaDatabase } from "react-icons/fa";
 
 const posts = [
   {
     tag: "Backend",
-    emoji: "⚙️",
+    Icon: FaServer,
     tagColor: "#818cf8",
     title: "Building Scalable APIs with Node.js",
     excerpt:
@@ -15,7 +16,7 @@ const posts = [
   },
   {
     tag: "Frontend",
-    emoji: "⚛️",
+    Icon: FaReact,
     tagColor: "var(--orange)",
     title: "React Server Components in Next.js 14",
     excerpt:
@@ -25,7 +26,7 @@ const posts = [
   },
   {
     tag: "Database",
-    emoji: "🗄️",
+    Icon: FaDatabase,
     tagColor: "#34d399",
     title: "Database Design for Modern Web Apps",
     excerpt:
@@ -48,7 +49,7 @@ export default function Blog() {
       {/* Watercolor */}
       <div className="absolute bottom-0 right-0 w-[360px] h-[260px] pointer-events-none">
         <div
-          className="blob absolute w-[190px] h-[150px] bottom-6  right-8"
+          className="blob absolute w-[190px] h-[150px] bottom-6 right-8"
           style={{ background: "var(--wc-yellow)", opacity: 1 }}
         />
         <div
@@ -58,10 +59,11 @@ export default function Blog() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col md:flex-row md:items-end md:justify-between mb-12"
         >
           <div>
@@ -73,19 +75,34 @@ export default function Blog() {
               Latest Articles
             </h2>
           </div>
-          <button className="btn-orange-outline mt-4 md:mt-0 self-start">
+          <motion.button
+            className="btn-orange-outline mt-4 md:mt-0 self-start"
+            whileHover={{ x: 4 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
             View All Posts →
-          </button>
+          </motion.button>
         </motion.div>
 
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
           {posts.map((p, i) => (
             <motion.article
               key={i}
-              initial={{ opacity: 0, y: 32 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              transition={{
+                duration: 0.65,
+                delay: 0.1 + i * 0.14,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{
+                y: -8,
+                boxShadow: `0 20px 40px ${p.tagColor}22`,
+                borderColor: `${p.tagColor}55`,
+                transition: { duration: 0.25, ease: "easeOut" },
+              }}
               className="rounded-2xl border overflow-hidden cursor-pointer group"
               style={{
                 background: "var(--card)",
@@ -93,13 +110,21 @@ export default function Blog() {
                 boxShadow: "var(--shadow-md)",
               }}
             >
-              {/* Color top bar */}
-              <div
-                className="h-1.5 w-full"
+              {/* Animated top bar */}
+              <motion.div
+                className="h-1.5 w-full origin-left"
+                initial={{ scaleX: 0 }}
+                animate={inView ? { scaleX: 1 } : {}}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.3 + i * 0.14,
+                  ease: "easeOut",
+                }}
                 style={{ background: p.tagColor }}
               />
 
               <div className="p-6">
+                {/* Tag + Icon */}
                 <div className="flex items-start justify-between mb-4">
                   <span
                     className="text-xs font-bold font-display px-3 py-1 rounded-full"
@@ -111,11 +136,22 @@ export default function Blog() {
                   >
                     {p.tag}
                   </span>
-                  <span style={{ fontSize: "24px" }}>{p.emoji}</span>
+                  <motion.span
+                    className="flex items-center justify-center w-10 h-10 rounded-xl"
+                    style={{
+                      background: `${p.tagColor}15`,
+                      color: p.tagColor,
+                      fontSize: "18px",
+                    }}
+                    whileHover={{ rotate: 10, scale: 1.15 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <p.Icon />
+                  </motion.span>
                 </div>
 
                 <h3
-                  className="font-display font-bold text-base leading-snug mb-3"
+                  className="font-display font-bold text-base leading-snug mb-3 group-hover:text-[var(--orange)] transition-colors duration-200"
                   style={{ color: "var(--ink)" }}
                 >
                   {p.title}
@@ -134,12 +170,14 @@ export default function Blog() {
                   <span className="text-xs" style={{ color: "var(--muted)" }}>
                     {p.date}
                   </span>
-                  <span
-                    className="text-xs font-semibold font-display"
+                  <motion.span
+                    className="text-xs font-semibold font-display flex items-center gap-1"
                     style={{ color: p.tagColor }}
+                    whileHover={{ x: 3 }}
+                    transition={{ type: "spring", stiffness: 400 }}
                   >
-                    {p.read}
-                  </span>
+                    {p.read} →
+                  </motion.span>
                 </div>
               </div>
             </motion.article>

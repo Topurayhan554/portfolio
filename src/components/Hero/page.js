@@ -1,7 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiFacebook, FiTwitter, FiLinkedin, FiGithub } from "react-icons/fi";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaGithub,
+  FaReact,
+  FaNodeJs,
+  FaFigma,
+} from "react-icons/fa";
+import { SiNextdotjs } from "react-icons/si";
 
 const roles = [
   "Full Stack Developer",
@@ -14,28 +23,28 @@ const techBadges = [
   {
     label: "React.js",
     color: "#61dafb",
-    icon: "⚛️",
+    Icon: FaReact,
     pos: "top-[12%] right-[18%]",
     anim: "float1",
   },
   {
     label: "Node.js",
     color: "#6cc24a",
-    icon: "🟢",
+    Icon: FaNodeJs,
     pos: "top-[38%] right-[8%]",
     anim: "float2",
   },
   {
     label: "Next.js",
     color: "#818cf8",
-    icon: "▲",
+    Icon: SiNextdotjs,
     pos: "bottom-[28%] right-[20%]",
     anim: "float3",
   },
   {
     label: "Figma",
     color: "#f24e1e",
-    icon: "🎨",
+    Icon: FaFigma,
     pos: "top-[20%] left-[6%]",
     anim: "float2",
   },
@@ -249,7 +258,7 @@ export default function Hero() {
               className="font-display font-bold leading-[1.08] mb-4"
               style={{ fontSize: "clamp(40px,6vw,70px)", color: "var(--ink)" }}
             >
-              Rafiqul Islam
+              Topu Rayhan
             </motion.h1>
 
             <motion.div
@@ -319,10 +328,10 @@ export default function Hero() {
 
             <motion.div variants={item} className="flex items-center gap-3">
               {[
-                { icon: FiFacebook, href: "#" },
-                { icon: FiTwitter, href: "#" },
-                { icon: FiLinkedin, href: "#" },
-                { icon: FiGithub, href: "#" },
+                { icon: FaFacebookF, href: "#" },
+                { icon: FaTwitter, href: "#" },
+                { icon: FaLinkedinIn, href: "#" },
+                { icon: FaGithub, href: "#" },
               ].map(({ icon: Icon, href }, i) => (
                 <motion.a
                   key={i}
@@ -380,8 +389,6 @@ export default function Hero() {
                 >
                   👨‍💻
                 </span>
-                {/* Uncomment for real photo: */}
-                {/* <Image src="/photo.jpg" alt="Rafiqul" fill style={{ objectFit:"cover",objectPosition:"top" }} /> */}
               </div>
             </div>
 
@@ -393,7 +400,9 @@ export default function Hero() {
                 whileHover={{ scale: 1.08 }}
                 style={{ minWidth: "110px" }}
               >
-                <span style={{ fontSize: "18px" }}>{b.icon}</span>
+                <span style={{ fontSize: "18px", color: b.color }}>
+                  <b.Icon />
+                </span>
                 <span
                   className="text-xs font-bold font-display"
                   style={{ color: b.color }}
