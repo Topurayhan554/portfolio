@@ -18,7 +18,7 @@ const tools = [
   { name: "Docker", icon: "🐳", color: "#2496ed" },
   { name: "Postman", icon: "📬", color: "#ff6c37" },
   { name: "AWS", icon: "☁️", color: "#ff9900" },
-  { name: "Vercel", icon: "△", color: "#111" },
+  { name: "Vercel", icon: "△", color: "#818cf8" },
   { name: "Linux", icon: "🐧", color: "#fcc624" },
 ];
 
@@ -29,24 +29,24 @@ export default function Skills() {
     <section
       id="skills"
       className="py-24 relative overflow-hidden"
-      style={{ background: "#fff" }}
+      style={{ background: "var(--bg)" }}
       ref={ref}
     >
       {/* Watercolor accents */}
       <div className="absolute top-0 left-0 w-[300px] h-[250px] pointer-events-none">
         <div
-          className="blob absolute w-[180px] h-[140px] top-8 left-6"
-          style={{ background: "var(--wc-green)", opacity: 0.2 }}
+          className="blob absolute w-[180px] h-[140px] top-8  left-6"
+          style={{ background: "var(--wc-green)", opacity: 1 }}
         />
         <div
           className="blob absolute w-[150px] h-[120px] top-20 left-20"
-          style={{ background: "var(--wc-blue)", opacity: 0.18 }}
+          style={{ background: "var(--wc-blue)", opacity: 1 }}
         />
       </div>
       <div className="absolute bottom-0 right-0 w-[280px] h-[200px] pointer-events-none">
         <div
           className="blob absolute w-[160px] h-[130px] bottom-6 right-8"
-          style={{ background: "var(--wc-pink)", opacity: 0.2 }}
+          style={{ background: "var(--wc-pink)", opacity: 1 }}
         />
       </div>
 
@@ -107,7 +107,7 @@ export default function Skills() {
                         ease: "easeOut",
                       }}
                       style={{
-                        background: `linear-gradient(90deg, ${s.color}, ${s.color}99)`,
+                        background: `linear-gradient(90deg,${s.color},${s.color}99)`,
                       }}
                     />
                   </div>
@@ -132,15 +132,15 @@ export default function Skills() {
               {tools.map((t, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.85 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.06 }}
                   whileHover={{ y: -4, scale: 1.06 }}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl border cursor-default text-center"
                   style={{
+                    background: "var(--card)",
                     borderColor: "var(--border)",
-                    background: "#fff",
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                    boxShadow: "var(--shadow-sm)",
                   }}
                 >
                   <span style={{ fontSize: "24px" }}>{t.icon}</span>
@@ -154,12 +154,12 @@ export default function Skills() {
               ))}
             </div>
 
-            {/* Extra info */}
+            {/* Tip box */}
             <div
-              className="mt-8 p-5 rounded-2xl"
+              className="mt-8 p-5 rounded-2xl border"
               style={{
                 background: "var(--orange-pale)",
-                border: "1px solid rgba(255,107,43,0.15)",
+                borderColor: "rgba(255,107,43,0.15)",
               }}
             >
               <p

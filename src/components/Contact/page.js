@@ -61,32 +61,33 @@ export default function Contact() {
     <section
       id="contact"
       className="py-24 relative overflow-hidden"
-      style={{ background: "var(--soft)" }}
+      style={{ background: "var(--bg-soft)" }}
       ref={ref}
     >
-      {/* Watercolor */}
+      {/* Watercolor blobs */}
       <div className="absolute top-0 left-0 w-[350px] h-[280px] pointer-events-none">
         <div
-          className="blob absolute w-[200px] h-[160px] top-4 left-4"
-          style={{ background: "var(--wc-teal)", opacity: 0.22 }}
+          className="blob absolute w-[200px] h-[160px] top-4  left-4"
+          style={{ background: "var(--wc-teal)", opacity: 1 }}
         />
         <div
           className="blob absolute w-[170px] h-[130px] top-16 left-20"
-          style={{ background: "var(--wc-green)", opacity: 0.18 }}
+          style={{ background: "var(--wc-green)", opacity: 1 }}
         />
       </div>
       <div className="absolute bottom-0 right-0 w-[320px] h-[240px] pointer-events-none">
         <div
-          className="blob absolute w-[180px] h-[140px] bottom-6 right-6"
-          style={{ background: "var(--wc-purple)", opacity: 0.2 }}
+          className="blob absolute w-[180px] h-[140px] bottom-6  right-6"
+          style={{ background: "var(--wc-purple)", opacity: 1 }}
         />
         <div
           className="blob absolute w-[150px] h-[120px] bottom-16 right-20"
-          style={{ background: "var(--wc-pink)", opacity: 0.18 }}
+          style={{ background: "var(--wc-pink)", opacity: 1 }}
         />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -104,28 +105,28 @@ export default function Contact() {
             className="text-sm mt-3 max-w-md mx-auto"
             style={{ color: "var(--muted)" }}
           >
-            Have a project in mind? I'd love to hear about it. Drop me a message
-            and let's create something amazing.
+            Have a project in mind? Drop me a message and let's create something
+            amazing.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-          {/* Left */}
+          {/* Left — contact info */}
           <motion.div
             initial={{ opacity: 0, x: -28 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-2 space-y-5"
+            className="lg:col-span-2 space-y-4"
           >
             {info.map((item, i) => (
               <motion.div
                 key={i}
                 whileHover={{ x: 4 }}
-                className="flex items-center gap-4 p-4 rounded-2xl"
+                className="flex items-center gap-4 p-4 rounded-2xl border"
                 style={{
-                  background: "#fff",
-                  border: "1px solid var(--border)",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                  background: "var(--card)",
+                  borderColor: "var(--border)",
+                  boxShadow: "var(--shadow-sm)",
                 }}
               >
                 <div
@@ -136,7 +137,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div
-                    className="text-xs font-body mb-0.5"
+                    className="text-xs mb-0.5"
                     style={{ color: "var(--muted)" }}
                   >
                     {item.label}
@@ -151,13 +152,13 @@ export default function Contact() {
               </motion.div>
             ))}
 
-            {/* Socials */}
+            {/* Social links */}
             <div
-              className="p-5 rounded-2xl"
+              className="p-5 rounded-2xl border"
               style={{
-                background: "#fff",
-                border: "1px solid var(--border)",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                background: "var(--card)",
+                borderColor: "var(--border)",
+                boxShadow: "var(--shadow-sm)",
               }}
             >
               <div
@@ -182,17 +183,17 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Form */}
+          {/* Right — form */}
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 28 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="lg:col-span-3 p-8 rounded-2xl space-y-5"
+            className="lg:col-span-3 p-8 rounded-2xl space-y-5 border"
             style={{
-              background: "#fff",
-              border: "1px solid var(--border)",
-              boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+              background: "var(--card)",
+              borderColor: "var(--border)",
+              boxShadow: "var(--shadow-md)",
             }}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -206,8 +207,8 @@ export default function Contact() {
                 <input
                   name="name"
                   value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Rafiqul Islam"
                   className="form-input"
                 />
@@ -223,13 +224,14 @@ export default function Contact() {
                   name="email"
                   type="email"
                   value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
                   required
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="hello@example.com"
                   className="form-input"
                 />
               </div>
             </div>
+
             <div>
               <label
                 className="block text-xs font-semibold font-display mb-2"
@@ -240,12 +242,13 @@ export default function Contact() {
               <input
                 name="subject"
                 value={form.subject}
-                onChange={(e) => setForm({ ...form, subject: e.target.value })}
                 required
+                onChange={(e) => setForm({ ...form, subject: e.target.value })}
                 placeholder="Project Collaboration"
                 className="form-input"
               />
             </div>
+
             <div>
               <label
                 className="block text-xs font-semibold font-display mb-2"
@@ -256,9 +259,9 @@ export default function Contact() {
               <textarea
                 name="message"
                 value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
                 required
                 rows={5}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
                 placeholder="Tell me about your project..."
                 className="form-input"
                 style={{ resize: "vertical" }}
@@ -268,9 +271,9 @@ export default function Contact() {
             <motion.button
               type="submit"
               whileHover={{ scale: status === "loading" ? 1 : 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileTap={{ scale: 0.97 }}
               disabled={status === "loading"}
-              className="w-full py-4 rounded-xl text-sm font-bold font-display transition-all"
+              className="w-full py-4 rounded-xl text-sm font-bold font-display"
               style={{
                 background:
                   status === "success"
@@ -279,12 +282,14 @@ export default function Contact() {
                       ? "#f87171"
                       : "var(--orange)",
                 color: "#fff",
-                boxShadow: "0 6px 24px rgba(255,107,43,0.28)",
+                border: "none",
+                cursor: status === "loading" ? "not-allowed" : "pointer",
                 opacity: status === "loading" ? 0.75 : 1,
+                boxShadow: "0 6px 24px rgba(255,107,43,0.28)",
               }}
             >
               {status === "loading"
-                ? "Sending..."
+                ? "Sending…"
                 : status === "success"
                   ? "✓ Message Sent!"
                   : status === "error"

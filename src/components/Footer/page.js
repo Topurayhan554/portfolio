@@ -14,7 +14,7 @@ export default function Footer() {
     <footer
       className="relative overflow-hidden"
       style={{
-        background: "var(--ink)",
+        background: "var(--footer-bg)",
         paddingTop: "60px",
         paddingBottom: "28px",
       }}

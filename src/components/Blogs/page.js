@@ -29,7 +29,7 @@ const posts = [
     tagColor: "#34d399",
     title: "Database Design for Modern Web Apps",
     excerpt:
-      "SQL vs NoSQL, indexing strategies, and when to use Redis caching for peak performance.",
+      "SQL vs NoSQL, indexing strategies, and Redis caching for peak performance.",
     date: "Feb 18, 2025",
     read: "10 min read",
   },
@@ -42,18 +42,18 @@ export default function Blog() {
     <section
       id="blog"
       className="py-24 relative overflow-hidden"
-      style={{ background: "#fff" }}
+      style={{ background: "var(--bg)" }}
       ref={ref}
     >
       {/* Watercolor */}
       <div className="absolute bottom-0 right-0 w-[360px] h-[260px] pointer-events-none">
         <div
-          className="blob absolute w-[190px] h-[150px] bottom-6 right-8"
-          style={{ background: "var(--wc-yellow)", opacity: 0.22 }}
+          className="blob absolute w-[190px] h-[150px] bottom-6  right-8"
+          style={{ background: "var(--wc-yellow)", opacity: 1 }}
         />
         <div
           className="blob absolute w-[160px] h-[130px] bottom-16 right-24"
-          style={{ background: "var(--wc-coral)", opacity: 0.18 }}
+          style={{ background: "var(--wc-coral)", opacity: 1 }}
         />
       </div>
 
@@ -88,12 +88,12 @@ export default function Blog() {
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
               className="rounded-2xl border overflow-hidden cursor-pointer group"
               style={{
+                background: "var(--card)",
                 borderColor: "var(--border)",
-                background: "#fff",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+                boxShadow: "var(--shadow-md)",
               }}
             >
-              {/* Top color bar */}
+              {/* Color top bar */}
               <div
                 className="h-1.5 w-full"
                 style={{ background: p.tagColor }}
@@ -115,7 +115,7 @@ export default function Blog() {
                 </div>
 
                 <h3
-                  className="font-display font-bold text-base leading-snug mb-3 group-hover:text-orange-DEFAULT transition-colors"
+                  className="font-display font-bold text-base leading-snug mb-3"
                   style={{ color: "var(--ink)" }}
                 >
                   {p.title}

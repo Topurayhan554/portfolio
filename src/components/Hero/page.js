@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { FiFacebook, FiTwitter, FiLinkedin, FiGithub } from "react-icons/fi";
 
 const roles = [
@@ -15,7 +14,6 @@ const techBadges = [
   {
     label: "React.js",
     color: "#61dafb",
-    bg: "#e8f8ff",
     icon: "⚛️",
     pos: "top-[12%] right-[18%]",
     anim: "float1",
@@ -23,15 +21,13 @@ const techBadges = [
   {
     label: "Node.js",
     color: "#6cc24a",
-    bg: "#edfbea",
     icon: "🟢",
     pos: "top-[38%] right-[8%]",
     anim: "float2",
   },
   {
     label: "Next.js",
-    color: "#111",
-    bg: "#f4f4f4",
+    color: "#818cf8",
     icon: "▲",
     pos: "bottom-[28%] right-[20%]",
     anim: "float3",
@@ -39,7 +35,6 @@ const techBadges = [
   {
     label: "Figma",
     color: "#f24e1e",
-    bg: "#fff2ef",
     icon: "🎨",
     pos: "top-[20%] left-[6%]",
     anim: "float2",
@@ -49,18 +44,18 @@ const techBadges = [
 export default function Hero() {
   const [typed, setTyped] = useState("");
   const [roleIdx, setRoleIdx] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const current = roles[roleIdx];
-    let timeout;
+    let t;
     if (!isDeleting && typed === current) {
-      timeout = setTimeout(() => setIsDeleting(true), 2000);
+      t = setTimeout(() => setDeleting(true), 2000);
     } else if (isDeleting && typed === "") {
-      setIsDeleting(false);
+      setDeleting(false);
       setRoleIdx((i) => (i + 1) % roles.length);
     } else {
-      timeout = setTimeout(
+      t = setTimeout(
         () =>
           setTyped(
             isDeleting
@@ -70,7 +65,7 @@ export default function Hero() {
         isDeleting ? 40 : 70,
       );
     }
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(t);
   }, [typed, isDeleting, roleIdx]);
 
   const container = {
@@ -93,118 +88,148 @@ export default function Hero() {
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ paddingTop: "80px", background: "#fff" }}
+      style={{ paddingTop: "80px", background: "var(--bg)" }}
     >
-      {/* ── WATERCOLOR BLOBS ── */}
-      {/* Big rainbow splash - top right */}
+      {/* ── WATERCOLOR BLOBS (top-right rainbow splash) ── */}
       <div
         className="absolute top-0 right-0 w-[640px] h-[640px] pointer-events-none"
         style={{ zIndex: 0 }}
       >
-        <div
-          className="blob blob-animate absolute w-[320px] h-[260px] top-10 right-16"
-          style={{ background: "var(--wc-pink)", opacity: 0.7 }}
-        />
-        <div
-          className="blob blob-animate absolute w-[280px] h-[220px] top-20 right-8"
-          style={{
-            background: "var(--wc-purple)",
-            opacity: 0.6,
-            animationDelay: "1.2s",
-          }}
-        />
-        <div
-          className="blob blob-animate absolute w-[240px] h-[200px] top-0 right-40"
-          style={{
-            background: "var(--wc-blue)",
-            opacity: 0.55,
-            animationDelay: "2.4s",
-          }}
-        />
-        <div
-          className="blob blob-animate absolute w-[200px] h-[180px] top-32 right-52"
-          style={{
-            background: "var(--wc-green)",
-            opacity: 0.5,
-            animationDelay: "0.8s",
-          }}
-        />
-        <div
-          className="blob blob-animate absolute w-[220px] h-[160px] top-8 right-28"
-          style={{
-            background: "var(--wc-yellow)",
-            opacity: 0.5,
-            animationDelay: "3s",
-          }}
-        />
-        <div
-          className="blob blob-animate absolute w-[180px] h-[140px] top-44 right-20"
-          style={{
-            background: "var(--wc-coral)",
-            opacity: 0.55,
-            animationDelay: "1.8s",
-          }}
-        />
-        <div
-          className="blob blob-animate absolute w-[160px] h-[130px] top-12 right-64"
-          style={{
-            background: "var(--wc-teal)",
-            opacity: 0.45,
-            animationDelay: "0.4s",
-          }}
-        />
+        {[
+          {
+            w: "320px",
+            h: "260px",
+            t: "10px",
+            r: "64px",
+            c: "var(--wc-pink)",
+            o: 0.9,
+            delay: "0s",
+          },
+          {
+            w: "280px",
+            h: "220px",
+            t: "80px",
+            r: "8px",
+            c: "var(--wc-purple)",
+            o: 0.85,
+            delay: "1.2s",
+          },
+          {
+            w: "240px",
+            h: "200px",
+            t: "0",
+            r: "160px",
+            c: "var(--wc-blue)",
+            o: 0.8,
+            delay: "2.4s",
+          },
+          {
+            w: "200px",
+            h: "180px",
+            t: "128px",
+            r: "208px",
+            c: "var(--wc-green)",
+            o: 0.75,
+            delay: "0.8s",
+          },
+          {
+            w: "220px",
+            h: "160px",
+            t: "8px",
+            r: "112px",
+            c: "var(--wc-yellow)",
+            o: 0.75,
+            delay: "3s",
+          },
+          {
+            w: "180px",
+            h: "140px",
+            t: "176px",
+            r: "80px",
+            c: "var(--wc-coral)",
+            o: 0.8,
+            delay: "1.8s",
+          },
+          {
+            w: "160px",
+            h: "130px",
+            t: "48px",
+            r: "256px",
+            c: "var(--wc-teal)",
+            o: 0.7,
+            delay: "0.4s",
+          },
+        ].map((b, i) => (
+          <div
+            key={i}
+            className="blob blob-animate absolute"
+            style={{
+              width: b.w,
+              height: b.h,
+              top: b.t,
+              right: b.r,
+              background: b.c,
+              opacity: b.o,
+              animationDelay: b.delay,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Bottom left soft splash */}
+      {/* Bottom-left soft splash */}
       <div
         className="absolute bottom-0 left-0 w-[360px] h-[280px] pointer-events-none"
         style={{ zIndex: 0 }}
       >
-        <div
-          className="blob blob-animate absolute w-[200px] h-[160px] bottom-8 left-8"
-          style={{
-            background: "var(--wc-blue)",
-            opacity: 0.4,
-            animationDelay: "2s",
-          }}
-        />
-        <div
-          className="blob blob-animate absolute w-[160px] h-[130px] bottom-16 left-20"
-          style={{
-            background: "var(--wc-purple)",
-            opacity: 0.35,
-            animationDelay: "1.4s",
-          }}
-        />
-        <div
-          className="blob blob-animate absolute w-[140px] h-[110px] bottom-4 left-36"
-          style={{
-            background: "var(--wc-pink)",
-            opacity: 0.35,
-            animationDelay: "2.8s",
-          }}
-        />
+        {[
+          {
+            w: "200px",
+            h: "160px",
+            b: "32px",
+            l: "32px",
+            c: "var(--wc-blue)",
+            o: 0.7,
+            delay: "2s",
+          },
+          {
+            w: "160px",
+            h: "130px",
+            b: "64px",
+            l: "80px",
+            c: "var(--wc-purple)",
+            o: 0.65,
+            delay: "1.4s",
+          },
+          {
+            w: "140px",
+            h: "110px",
+            b: "16px",
+            l: "144px",
+            c: "var(--wc-pink)",
+            o: 0.6,
+            delay: "2.8s",
+          },
+        ].map((b, i) => (
+          <div
+            key={i}
+            className="blob blob-animate absolute"
+            style={{
+              width: b.w,
+              height: b.h,
+              bottom: b.b,
+              left: b.l,
+              background: b.c,
+              opacity: b.o,
+              animationDelay: b.delay,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Subtle mid blobs */}
-      <div
-        className="absolute top-1/2 left-1/3 w-[180px] h-[140px] pointer-events-none"
-        style={{ zIndex: 0 }}
-      >
-        <div
-          className="blob blob-animate w-full h-full"
-          style={{
-            background: "var(--wc-yellow)",
-            opacity: 0.2,
-            animationDelay: "1.6s",
-          }}
-        />
-      </div>
-
-      {/* ── CONTENT ── */}
+      {/* ── MAIN CONTENT ── */}
       <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
         <div className="flex items-center gap-12 flex-wrap lg:flex-nowrap">
-          {/* LEFT */}
+          {/* LEFT — Text */}
           <motion.div
             variants={container}
             initial="hidden"
@@ -213,11 +238,8 @@ export default function Hero() {
           >
             <motion.p
               variants={item}
-              className="text-lg font-semibold mb-2"
-              style={{
-                color: "var(--orange)",
-                fontFamily: "var(--font-display)",
-              }}
+              className="text-lg font-semibold mb-2 font-display"
+              style={{ color: "var(--orange)" }}
             >
               Hello, I'm
             </motion.p>
@@ -225,24 +247,21 @@ export default function Hero() {
             <motion.h1
               variants={item}
               className="font-display font-bold leading-[1.08] mb-4"
-              style={{
-                fontSize: "clamp(40px, 6vw, 70px)",
-                color: "var(--ink)",
-              }}
+              style={{ fontSize: "clamp(40px,6vw,70px)", color: "var(--ink)" }}
             >
               Rafiqul Islam
             </motion.h1>
 
             <motion.div
               variants={item}
-              className="flex items-center gap-2 mb-4"
+              className="flex flex-wrap items-center gap-1.5 mb-4"
               style={{ minHeight: "32px" }}
             >
               <span
                 className="text-base font-semibold font-display"
                 style={{ color: "var(--muted)" }}
               >
-                A{" "}
+                A
               </span>
               <span
                 className="text-base font-bold font-display"
@@ -261,7 +280,6 @@ export default function Hero() {
                 className="text-base font-semibold font-display"
                 style={{ color: "var(--muted)" }}
               >
-                {" "}
                 From Dhaka
               </span>
             </motion.div>
@@ -299,7 +317,6 @@ export default function Hero() {
               </button>
             </motion.div>
 
-            {/* Socials */}
             <motion.div variants={item} className="flex items-center gap-3">
               {[
                 { icon: FiFacebook, href: "#" },
@@ -322,7 +339,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT — Photo + badges */}
+          {/* RIGHT — Photo + floating badges */}
           <motion.div
             initial={{ opacity: 0, x: 40, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -330,33 +347,31 @@ export default function Hero() {
             className="flex-shrink-0 relative"
             style={{ width: "340px", height: "420px" }}
           >
-            {/* Photo container with watercolor bg */}
+            {/* Photo card */}
             <div
-              className="relative w-full h-full rounded-[40px] overflow-hidden flex items-end justify-center"
+              className="relative w-full h-full rounded-[40px] overflow-hidden"
               style={{
                 background:
-                  "linear-gradient(160deg, rgba(255,182,193,0.35) 0%, rgba(197,162,255,0.35) 40%, rgba(147,210,255,0.3) 100%)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+                  "linear-gradient(160deg,var(--wc-pink) 0%,var(--wc-purple) 40%,var(--wc-blue) 100%)",
+                boxShadow: "var(--shadow-lg)",
+                border: "1px solid var(--border)",
               }}
             >
-              {/* Inner watercolor blobs on photo bg */}
               <div
                 className="blob absolute w-48 h-36 top-6 left-4"
-                style={{ background: "var(--wc-pink)", opacity: 0.5 }}
+                style={{ background: "var(--wc-coral)", opacity: 0.7 }}
               />
               <div
                 className="blob absolute w-40 h-32 top-16 right-4"
-                style={{ background: "var(--wc-blue)", opacity: 0.4 }}
+                style={{ background: "var(--wc-blue)", opacity: 0.6 }}
               />
               <div
                 className="blob absolute w-36 h-28 bottom-24 right-8"
-                style={{ background: "var(--wc-green)", opacity: 0.35 }}
+                style={{ background: "var(--wc-green)", opacity: 0.6 }}
               />
 
-              {/* Placeholder / Photo */}
               <div className="relative z-10 w-full h-full flex items-center justify-center">
-                <div
-                  className="text-center"
+                <span
                   style={{
                     fontSize: "140px",
                     lineHeight: 1,
@@ -364,9 +379,9 @@ export default function Hero() {
                   }}
                 >
                   👨‍💻
-                </div>
-                {/* Uncomment to use real photo: */}
-                {/* <Image src="/photo.jpg" alt="Rafiqul" fill style={{ objectFit: "cover", objectPosition: "top" }} /> */}
+                </span>
+                {/* Uncomment for real photo: */}
+                {/* <Image src="/photo.jpg" alt="Rafiqul" fill style={{ objectFit:"cover",objectPosition:"top" }} /> */}
               </div>
             </div>
 
@@ -438,8 +453,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        style={{ color: "var(--muted)" }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
       >
         <div
           className="w-5 h-8 rounded-full border-2 flex items-start justify-center pt-1.5"
@@ -453,8 +467,6 @@ export default function Hero() {
           />
         </div>
       </motion.div>
-
-      <style>{`@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}`}</style>
     </section>
   );
 }
