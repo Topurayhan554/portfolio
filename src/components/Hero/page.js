@@ -24,28 +24,28 @@ const techBadges = [
     label: "React.js",
     color: "#61dafb",
     Icon: FaReact,
-    pos: "top-[12%] right-[18%]",
+    pos: "top-[-10%] right-[30%]",
     anim: "float1",
   },
   {
     label: "Node.js",
     color: "#6cc24a",
     Icon: FaNodeJs,
-    pos: "top-[38%] right-[8%]",
+    pos: "top-[38%] right-[-19%]",
     anim: "float2",
   },
   {
     label: "Next.js",
     color: "#818cf8",
     Icon: SiNextdotjs,
-    pos: "bottom-[28%] right-[20%]",
+    pos: "bottom-[28%] right-[-20%]",
     anim: "float3",
   },
   {
     label: "Figma",
     color: "#f24e1e",
     Icon: FaFigma,
-    pos: "top-[20%] left-[6%]",
+    pos: "top-[20%] left-[-19%]",
     anim: "float2",
   },
 ];
@@ -328,10 +328,16 @@ export default function Hero() {
 
             <motion.div variants={item} className="flex items-center gap-3">
               {[
-                { icon: FaFacebookF, href: "#" },
-                { icon: FaTwitter, href: "#" },
-                { icon: FaLinkedinIn, href: "#" },
-                { icon: FaGithub, href: "#" },
+                {
+                  icon: FaFacebookF,
+                  href: "https://www.facebook.com/topuray.han.94064",
+                },
+                { icon: FaTwitter, href: "https://x.com/Topu629308" },
+                {
+                  icon: FaLinkedinIn,
+                  href: "https://www.linkedin.com/in/topu-ray-han/",
+                },
+                { icon: FaGithub, href: "https://github.com/Topurayhan554" },
               ].map(({ icon: Icon, href }, i) => (
                 <motion.a
                   key={i}
@@ -380,15 +386,7 @@ export default function Hero() {
               />
 
               <div className="relative z-10 w-full h-full flex items-center justify-center">
-                <span
-                  style={{
-                    fontSize: "140px",
-                    lineHeight: 1,
-                    paddingBottom: "20px",
-                  }}
-                >
-                  👨‍💻
-                </span>
+                <img src="/favicon.ico" />
               </div>
             </div>
 
@@ -421,13 +419,13 @@ export default function Hero() {
                 className="font-display font-bold text-2xl"
                 style={{ color: "var(--orange)", lineHeight: 1 }}
               >
-                3+
+                1+
               </div>
               <div
                 className="text-xs font-body"
                 style={{ color: "var(--muted)" }}
               >
-                Years of
+                Year of
                 <br />
                 Experience
               </div>
@@ -442,7 +440,7 @@ export default function Hero() {
                 className="font-display font-bold text-2xl"
                 style={{ color: "var(--orange)", lineHeight: 1 }}
               >
-                25+
+                10+
               </div>
               <div
                 className="text-xs font-body"

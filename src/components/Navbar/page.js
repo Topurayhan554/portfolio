@@ -50,11 +50,10 @@ export default function Navbar() {
     localStorage.setItem("theme", next);
   };
 
-  // Resume download — /public/resume.pdf ফাইলটি রাখো
   const handleDownload = () => {
     const a = document.createElement("a");
-    a.href = "/resume.pdf";
-    a.download = "Rafiqul_Islam_Resume.pdf";
+    a.href = "/TOPU RAYHAN _ FULL STACK DEVELOPER.pdf";
+    a.download = "TOPU RAYHAN_FULL STACK DEVELOPER.pdf";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -94,7 +93,7 @@ export default function Navbar() {
               className="font-display font-bold text-xl ml-1"
               style={{ color: "var(--ink)" }}
             >
-              RI
+              TR
             </span>
             <span
               className="font-display font-semibold text-xl"
@@ -135,7 +134,7 @@ export default function Navbar() {
               onClick={toggleTheme}
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.94 }}
-              title={isDark ? "Light Mode এ যাও" : "Dark Mode এ যাও"}
+              title={isDark ? "Light Mode" : "Dark Mode"}
               className="relative w-[54px] h-7 rounded-full flex items-center px-1 cursor-pointer"
               style={{
                 background: isDark
@@ -215,7 +214,7 @@ export default function Navbar() {
             </motion.button>
           </div>
 
-          {/* ── Mobile: mini theme toggle + hamburger ── */}
+          {/* ── Mobile ── */}
           <div className="md:hidden flex items-center gap-2">
             <motion.button
               onClick={toggleTheme}

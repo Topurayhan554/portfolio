@@ -2,6 +2,7 @@
 
 import About from "@/components/About/page";
 import Blog from "@/components/Blogs/page";
+import CompetitiveProgramming from "@/components/CompetitiveProgramming/page";
 import Contact from "@/components/Contact/page";
 import Footer from "@/components/Footer/page";
 import Hero from "@/components/Hero/page";
@@ -18,6 +19,7 @@ export default function Home() {
       <Services />
       <About />
       <Skills />
+      <CompetitiveProgramming />
       <Projects />
       <Blog />
       <Contact />

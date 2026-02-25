@@ -74,62 +74,14 @@ export default function About() {
               />
 
               <div className="w-full h-full flex items-center justify-center relative z-10">
-                <span style={{ fontSize: "120px" }}>👨‍💼</span>
-                {/* <Image src="/photo.jpg" alt="Rafiqul" fill style={{ objectFit:"cover", objectPosition:"top" }} /> */}
+                {/* <span style={{ fontSize: "120px" }}>👨‍💼</span> */}
+                <img
+                  src="/topu1.png"
+                  alt="Topu"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "top" }}
+                />
               </div>
-
-              {/* Stat: years */}
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute top-6 -right-6 glass-card px-4 py-3 z-20"
-              >
-                <div
-                  className="font-display font-bold text-2xl leading-none"
-                  style={{ color: "var(--orange)" }}
-                >
-                  3+
-                </div>
-                <div
-                  className="text-xs mt-0.5 font-body"
-                  style={{ color: "var(--muted)" }}
-                >
-                  Years of
-                  <br />
-                  Success
-                </div>
-              </motion.div>
-
-              {/* Stat: projects */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{
-                  duration: 3.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5,
-                }}
-                className="absolute bottom-8 -right-6 glass-card px-4 py-3 z-20"
-              >
-                <div
-                  className="font-display font-bold text-2xl leading-none"
-                  style={{ color: "var(--ink)" }}
-                >
-                  25+
-                </div>
-                <div
-                  className="text-xs mt-0.5 font-body"
-                  style={{ color: "var(--muted)" }}
-                >
-                  Total
-                  <br />
-                  Projects
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 
@@ -157,7 +109,7 @@ export default function About() {
               style={{ color: "var(--muted)" }}
             >
               Hello! I'm a full stack web developer, and I'm very passionate and
-              dedicated to my work. With 3+ years of experience, I have acquired
+              dedicated to my work. With 1+ years of experience, I have acquired
               the skills and knowledge necessary to make your project a success.
             </p>
             <p
@@ -166,7 +118,7 @@ export default function About() {
             >
               I specialize in{" "}
               <strong style={{ color: "var(--ink)" }}>
-                React, Next.js, Node.js
+                React, Next.js, Node.js, Express.js
               </strong>
               , and modern web technologies. I believe in writing clean,
               maintainable code that scales.
@@ -175,10 +127,9 @@ export default function About() {
             {/* Stats */}
             <div className="flex gap-8 mb-8 flex-wrap">
               {[
-                ["3+", "Years Exp."],
-                ["25+", "Projects"],
-                ["15+", "Clients"],
-                ["5★", "Reviews"],
+                ["1+", "Years Exp."],
+                ["10+", "Projects"],
+                ["1000+", "Problem Solve"],
               ].map(([n, l]) => (
                 <div key={l} className="text-center">
                   <div
@@ -203,7 +154,7 @@ export default function About() {
                 {
                   icon: "🎓",
                   title: "Education",
-                  desc: "B.Sc. in CSE — strong algorithms & software design foundation.",
+                  desc: "I have completed my HSC from the Science group. Currently, I am studying Botany at Dinajpur Adarsha College.",
                 },
                 {
                   icon: "💼",
