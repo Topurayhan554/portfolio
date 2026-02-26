@@ -3,7 +3,15 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiDownload, FiSun, FiMoon } from "react-icons/fi";
 
-const links = ["Home", "About", "Skills", "Projects", "Blog", "Contact"];
+const links = [
+  "Home",
+  "About",
+  "Skills",
+  "Competitive",
+  "Projects",
+  "Blog",
+  "Contact",
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,7 +30,15 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 30);
-      const ids = ["home", "about", "skills", "projects", "blog", "contact"];
+      const ids = [
+        "home",
+        "about",
+        "skills",
+        "competitive",
+        "projects",
+        "blog",
+        "contact",
+      ];
       let cur = "Home";
       ids.forEach((id) => {
         const el = document.getElementById(id);

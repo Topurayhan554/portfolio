@@ -1,12 +1,7 @@
 "use client";
 import { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useTransform,
-  useSpring,
-} from "framer-motion";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   FiX,
@@ -15,6 +10,7 @@ import {
   FiCalendar,
   FiUsers,
   FiArrowRight,
+  FiImage,
 } from "react-icons/fi";
 
 const categories = ["All", "Full Stack", "Frontend", "Backend", "Mobile"];
@@ -22,175 +18,141 @@ const categories = ["All", "Full Stack", "Frontend", "Backend", "Mobile"];
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Garments Production Tracker",
     cat: "Full Stack",
-    desc: "Full-stack shopping platform with Stripe payments and admin dashboard.",
+    image: "/garments-p-tracker.png",
+    desc: "Enterprise-grade production management with role-based access and real-time tracking.",
     longDesc:
-      "A production-ready e-commerce platform built with Next.js and Node.js. Features include real-time inventory management, Stripe payment integration, order tracking, customer dashboard, and a full admin panel with analytics. Handles 1000+ concurrent users with 99.9% uptime.",
-    tech: ["Next.js", "Node.js", "MongoDB", "Stripe", "Redis", "Tailwind CSS"],
-    emoji: "🛒",
-    color: "#818cf8",
-    cardBg: "rgba(129,140,248,0.1)",
+      "A comprehensive full-stack production management system built for garment manufacturing industry. Implements secure role-based authentication with Firebase, allowing Admins to manage users and analytics, Managers to handle product inventory and order approvals, and Buyers to place and track orders. Features real-time order status updates through 8 production stages (Pending → Approved → In Production → Quality Check → Packed → Shipped → Delivered), bulk operations for efficient workflow management, and detailed production analytics. Deployed on Firebase Hosting (frontend) and Vercel (backend) with MongoDB Atlas for data persistence. ",
+    tech: [
+      "React 18.3",
+      "Vite 6.0",
+      "Tailwind CSS 4",
+      "Framer Motion",
+      "Node.js 20",
+      "Express.js",
+      "MongoDB 6",
+      "Firebase Auth",
+      "TanStack Query",
+      "JWT",
+    ],
+    emoji: "🏭",
+    color: "#10b981",
+    cardBg: "rgba(16,185,129,0.1)",
     stats: [
-      { icon: "👥", label: "Users", val: "12K+" },
-      { icon: "⏱️", label: "Uptime", val: "99.9%" },
-      { icon: "⭐", label: "Rating", val: "4.9" },
+      { icon: "👥", label: "Roles", val: "3" },
+      { icon: "📈", label: "Efficiency", val: "+70%" },
+      { icon: "⚡", label: "Load", val: "<2s" },
     ],
     features: [
-      "Real-time inventory sync",
-      "Stripe payment gateway",
-      "Admin analytics dashboard",
-      "Order tracking & notifications",
-      "Mobile responsive PWA",
+      "Role-based authentication (Admin, Manager, Buyer)",
+      "Real-time order tracking through 8 stages",
+      "Product CRUD with image upload & management",
+      "Bulk order operations & approval workflows",
+      "Production analytics with revenue tracking",
+      "Responsive design with dark mode support",
+      "Order cancellation & status notifications",
+      "Comprehensive admin dashboard",
     ],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    date: "Jan 2025",
+    liveUrl: "https://garments-production-trac-2075a.web.app/",
+    apiUrl: "https://garments-production-tracker-server.vercel.app/",
+    sourceUrl:
+      "https://github.com/Topurayhan554/garments-production-tracker-client",
+    backendRepo:
+      "https://github.com/Topurayhan554/garments-product-tracks-server",
+    date: "February 2025",
     role: "Full Stack Developer",
+    duration: "1 month",
   },
   {
     id: 2,
-    title: "AI Chat App",
+    title: "PawMart Pet Shop",
     cat: "Full Stack",
-    desc: "Real-time AI-powered chat with GPT-4 and WebSocket support.",
+    image: "/pawmart.png",
+    desc: "Pet adoption platform with integrated marketplace for pet products and accessories.",
     longDesc:
-      "A modern real-time chat application powered by OpenAI's GPT-4 API. Supports multi-room conversations, file sharing, voice messages, and WebSocket for sub-50ms message delivery. Built with Redis for session management and Docker for deployment.",
-    tech: ["React", "Socket.io", "OpenAI API", "Redis", "Docker", "Express"],
-    emoji: "🤖",
-    color: "#ff7a40",
-    cardBg: "rgba(255,107,43,0.1)",
-    stats: [
-      { icon: "💬", label: "Msg/day", val: "5K+" },
-      { icon: "⚡", label: "Latency", val: "<50ms" },
-      { icon: "🤖", label: "AI Model", val: "GPT-4" },
+      "Modern full-stack pet shop application enabling pet adoption and product sales. The platform allows users to browse pets available for adoption with comprehensive details including category, breed, age, price, and location. Features a complete e-commerce section for pet food, toys, and care products. Users can create accounts to manage their pet listings, upload images, and track their activities. Built with responsive design principles ensuring perfect functionality across all devices. Implements Firebase authentication for secure user management and MongoDB for efficient data storage.",
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "React Router",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Firebase",
     ],
-    features: [
-      "GPT-4 powered responses",
-      "Multi-room support",
-      "File & image sharing",
-      "WebSocket real-time sync",
-      "Docker containerized",
-    ],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    date: "Dec 2024",
-    role: "Full Stack Developer",
-  },
-  {
-    id: 3,
-    title: "Portfolio CMS",
-    cat: "Frontend",
-    desc: "Headless CMS with live preview, custom themes, and SEO tools.",
-    longDesc:
-      "A headless CMS designed specifically for developer portfolios. Features a live preview editor, 10+ custom themes, built-in SEO tools, markdown editor, and one-click Vercel deployment. Used by 300+ developers worldwide.",
-    tech: ["Next.js", "Sanity.io", "Tailwind CSS", "Vercel", "TypeScript"],
-    emoji: "🎨",
-    color: "#34d399",
-    cardBg: "rgba(52,211,153,0.1)",
-    stats: [
-      { icon: "🌐", label: "Sites", val: "300+" },
-      { icon: "🎨", label: "Themes", val: "10+" },
-      { icon: "🚀", label: "Deploy", val: "<1 min" },
-    ],
-    features: [
-      "Live preview editor",
-      "10+ custom themes",
-      "Built-in SEO optimizer",
-      "Markdown + rich text",
-      "One-click Vercel deploy",
-    ],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    date: "Nov 2024",
-    role: "Frontend Developer",
-  },
-  {
-    id: 4,
-    title: "Task Manager SaaS",
-    cat: "Full Stack",
-    desc: "Kanban boards, Gantt charts, and team collaboration tools.",
-    longDesc:
-      "A comprehensive project management SaaS with Kanban boards, Gantt charts, time tracking, team collaboration, and detailed analytics. Supports unlimited projects with role-based access control and real-time updates.",
-    tech: ["Next.js", "Prisma", "PostgreSQL", "Tailwind CSS", "React DnD"],
-    emoji: "📋",
+    emoji: "🐾",
     color: "#f59e0b",
     cardBg: "rgba(245,158,11,0.1)",
     stats: [
-      { icon: "👥", label: "Teams", val: "200+" },
-      { icon: "📋", label: "Tasks/mo", val: "8K+" },
-      { icon: "⭐", label: "Rating", val: "4.8" },
+      { icon: "🐕", label: "Pets", val: "Adopt" },
+      { icon: "🛒", label: "Shop", val: "Products" },
+      { icon: "📱", label: "Mobile", val: "Responsive" },
     ],
     features: [
-      "Drag & drop Kanban board",
-      "Gantt chart view",
-      "Time tracking & reports",
-      "Role-based access control",
-      "Real-time collaboration",
+      "Pet adoption with detailed profiles",
+      "Pet listing with image uploads",
+      "Pet food & accessories shop",
+      "Care products marketplace",
+      "User authentication & management",
+      "Interactive forms & date selection",
+      "Real-time notifications (Toast & SweetAlert)",
+      "Mobile-responsive design",
     ],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    date: "Oct 2024",
+    liveUrl: "https://pawmart-petshop.netlify.app/",
+    apiUrl: "https://b12-a10-future-box-server.vercel.app/",
+    sourceUrl: "https://github.com/Topurayhan554/B12-A10-Future-Box-client.git",
+    backendRepo:
+      "https://github.com/Topurayhan554/B12-A10-Future-Box-Server.git",
+    date: "Oct 2025",
     role: "Full Stack Developer",
+    duration: "1 month",
   },
   {
-    id: 5,
-    title: "REST API Builder",
-    cat: "Backend",
-    desc: "Auto-generate REST APIs from database schemas with built-in auth.",
-    longDesc:
-      "A powerful tool that auto-generates production-ready REST APIs from your database schema. Includes JWT authentication, rate limiting, API documentation, input validation, and supports MongoDB and PostgreSQL.",
-    tech: ["Node.js", "Express", "MongoDB", "PostgreSQL", "JWT", "Swagger"],
-    emoji: "⚙️",
-    color: "#ec4899",
-    cardBg: "rgba(236,72,153,0.1)",
-    stats: [
-      { icon: "🔌", label: "Endpoints", val: "Auto" },
-      { icon: "🔒", label: "Auth", val: "JWT" },
-      { icon: "📄", label: "Docs", val: "Swagger" },
-    ],
-    features: [
-      "Auto-generate endpoints",
-      "JWT authentication",
-      "Rate limiting built-in",
-      "Swagger auto-documentation",
-      "Input validation & sanitization",
-    ],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    date: "Sep 2024",
-    role: "Backend Developer",
-  },
-  {
-    id: 6,
-    title: "Weather Dashboard",
+    id: 3,
+    title: "GameHub",
     cat: "Frontend",
-    desc: "Beautiful weather app with D3.js charts and live map integration.",
+    image: "/gamehub.png",
+    desc: "Modern game discovery platform with ratings and user management.",
     longDesc:
-      "An interactive weather platform with 15-day forecasts, D3.js powered charts, Mapbox integration, severe weather alerts, and hourly breakdowns. Supports 50+ cities with live data updates every 10 minutes.",
-    tech: ["React", "D3.js", "Mapbox", "Weather API", "Tailwind CSS"],
-    emoji: "🌤️",
-    color: "#38bdf8",
-    cardBg: "rgba(56,189,248,0.1)",
+      "A sleek and modern indie game library platform built with React. GameHub makes game discovery easy and fun with detailed game pages, real-time ratings, and user reviews. Users can create accounts to personalize their experience, manage their profiles, subscribe to newsletters, and install games with a single click. The platform features a beautiful responsive design using Tailwind CSS and DaisyUI, smooth animations powered by Framer Motion, and interactive game showcases using Swiper. Complete with authentication features including login, logout, profile updates, and password reset.",
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "DaisyUI",
+      "React Router",
+      "Swiper",
+      "Framer Motion",
+    ],
+    emoji: "🎮",
+    color: "#8b5cf6",
+    cardBg: "rgba(139,92,246,0.1)",
     stats: [
-      { icon: "🏙️", label: "Cities", val: "50+" },
-      { icon: "📅", label: "Forecast", val: "15-day" },
-      { icon: "🔄", label: "Updates", val: "Live" },
+      { icon: "🎯", label: "Platform", val: "Indie Games" },
+      { icon: "⭐", label: "Features", val: "10+" },
+      { icon: "🚀", label: "Performance", val: "Fast" },
     ],
     features: [
-      "15-day weather forecast",
-      "D3.js interactive charts",
-      "Mapbox live maps",
-      "Severe weather alerts",
-      "Hourly breakdown view",
+      "Indie game library with search",
+      "Detailed game pages with ratings",
+      "Top-rated games section",
+      "One-click game installation",
+      "User authentication & authorization",
+      "Profile management system",
+      "Password reset via email",
+      "Newsletter subscription",
+      "Responsive mobile-first design",
+      "Smooth page transitions",
+      "Interactive game carousels",
     ],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    date: "Aug 2024",
+    liveUrl: "https://game-hub-56.netlify.app/",
+    sourceUrl: "https://github.com/Topurayhan554/game-hub",
+    date: "2024",
     role: "Frontend Developer",
   },
 ];
 
-/* ── Stagger container variants ── */
+/* ── Variants ── */
 const gridVariants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1 } },
@@ -203,8 +165,125 @@ const cardVariants = {
     scale: 1,
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   },
-  exit: { opacity: 0, y: -20, scale: 0.95, transition: { duration: 0.3 } },
 };
+
+/* ══════════════════════════════════════════
+   IMAGE AREA — used in both Card + Modal
+══════════════════════════════════════════ */
+function ProjectImage({
+  p,
+  hovered = false,
+  height = "h-48",
+  isModal = false,
+}) {
+  if (p.image) {
+    return (
+      <div className={`${height} relative overflow-hidden flex-shrink-0`}>
+        <Image
+          src={p.image}
+          alt={p.title}
+          fill
+          className="object-cover"
+          style={{
+            transform: hovered ? "scale(1.06)" : "scale(1)",
+            transition: "transform 0.5s cubic-bezier(.22,1,.36,1)",
+          }}
+        />
+        {/* Overlay gradient on hover */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: hovered
+              ? `linear-gradient(to top, ${p.color}44 0%, transparent 60%)`
+              : "transparent",
+            transition: "background 0.4s ease",
+          }}
+        />
+        {/* Category badge */}
+        <span
+          className="absolute top-3 right-3 text-xs font-bold font-display px-3 py-1 rounded-full z-10"
+          style={{
+            background: "rgba(0,0,0,0.55)",
+            color: "#fff",
+            backdropFilter: "blur(6px)",
+            border: `1px solid ${p.color}55`,
+          }}
+        >
+          {p.cat}
+        </span>
+      </div>
+    );
+  }
+
+  /* ── Watercolor Placeholder (no image) ── */
+  return (
+    <div
+      className={`${height} flex items-center justify-center relative overflow-hidden flex-shrink-0`}
+      style={{
+        background: hovered ? `${p.color}14` : p.cardBg,
+        transition: "background 0.4s ease",
+      }}
+    >
+      {/* Blobs */}
+      <motion.div
+        className="blob absolute w-36 h-28 top-2 left-4"
+        style={{ background: "var(--wc-pink)" }}
+        animate={{ opacity: hovered ? 1 : 0.6, scale: hovered ? 1.1 : 1 }}
+        transition={{ duration: 0.4 }}
+      />
+      <motion.div
+        className="blob absolute w-32 h-24 bottom-2 right-6"
+        style={{ background: "var(--wc-blue)" }}
+        animate={{ opacity: hovered ? 0.9 : 0.5, scale: hovered ? 1.1 : 1 }}
+        transition={{ duration: 0.4, delay: 0.05 }}
+      />
+
+      {/* Emoji placeholder */}
+      <motion.span
+        className="relative z-10 select-none"
+        animate={{
+          scale: hovered ? 1.18 : 1,
+          rotate: hovered ? [0, -8, 8, -4, 0] : 0,
+          y: hovered ? -4 : 0,
+        }}
+        transition={{
+          scale: { duration: 0.35, ease: "backOut" },
+          rotate: { duration: 0.5, ease: "easeInOut" },
+          y: { duration: 0.35, ease: "easeOut" },
+        }}
+        style={{
+          fontSize: isModal ? "96px" : "64px",
+          filter: hovered ? `drop-shadow(0 8px 16px ${p.color}55)` : "none",
+        }}
+      >
+        {p.emoji}
+      </motion.span>
+
+      {/* Glow overlay */}
+      <motion.div
+        className="absolute inset-0"
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          background: `radial-gradient(circle at center, ${p.color}12 0%, transparent 70%)`,
+        }}
+      />
+
+      {/* Category badge */}
+      <motion.span
+        className="absolute top-3 right-3 text-xs font-bold font-display px-3 py-1 rounded-full"
+        animate={{
+          background: hovered ? `${p.color}30` : `${p.color}15`,
+          scale: hovered ? 1.05 : 1,
+        }}
+        transition={{ duration: 0.25 }}
+        style={{ color: p.color, border: `1px solid ${p.color}40` }}
+      >
+        {p.cat}
+      </motion.span>
+    </div>
+  );
+}
 
 /* ══════════════════════════════
    PROJECT CARD
@@ -215,7 +294,6 @@ function ProjectCard({ p, onOpen }) {
   return (
     <motion.div
       variants={cardVariants}
-      whileHover="hovered"
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       className="rounded-2xl overflow-hidden flex flex-col relative"
@@ -231,7 +309,7 @@ function ProjectCard({ p, onOpen }) {
         cursor: "pointer",
       }}
     >
-      {/* ── Top colored line that grows on hover ── */}
+      {/* Top color line */}
       <div
         className="absolute top-0 left-0 right-0 h-0.5 z-10"
         style={{
@@ -243,75 +321,10 @@ function ProjectCard({ p, onOpen }) {
       />
 
       {/* ── IMAGE AREA ── */}
-      <div
-        className="h-48 flex items-center justify-center relative overflow-hidden flex-shrink-0"
-        style={{
-          background: hovered ? `${p.color}14` : p.cardBg,
-          transition: "background 0.4s ease",
-        }}
-      >
-        {/* Watercolor blobs */}
-        <motion.div
-          className="blob absolute w-36 h-28 top-2 left-4"
-          style={{ background: "var(--wc-pink)" }}
-          animate={{ opacity: hovered ? 1 : 0.6, scale: hovered ? 1.1 : 1 }}
-          transition={{ duration: 0.4 }}
-        />
-        <motion.div
-          className="blob absolute w-32 h-24 bottom-2 right-6"
-          style={{ background: "var(--wc-blue)" }}
-          animate={{ opacity: hovered ? 0.9 : 0.5, scale: hovered ? 1.1 : 1 }}
-          transition={{ duration: 0.4, delay: 0.05 }}
-        />
+      <ProjectImage p={p} hovered={hovered} height="h-48" />
 
-        {/* Emoji — scales and rotates slightly on hover */}
-        <motion.span
-          className="relative z-10 select-none"
-          animate={{
-            scale: hovered ? 1.18 : 1,
-            rotate: hovered ? [0, -8, 8, -4, 0] : 0,
-            y: hovered ? -4 : 0,
-          }}
-          transition={{
-            scale: { duration: 0.35, ease: "backOut" },
-            rotate: { duration: 0.5, ease: "easeInOut" },
-            y: { duration: 0.35, ease: "easeOut" },
-          }}
-          style={{
-            fontSize: "64px",
-            filter: hovered ? `drop-shadow(0 8px 16px ${p.color}55)` : "none",
-          }}
-        >
-          {p.emoji}
-        </motion.span>
-
-        {/* Category badge */}
-        <motion.span
-          className="absolute top-3 right-3 text-xs font-bold font-display px-3 py-1 rounded-full"
-          animate={{
-            background: hovered ? `${p.color}30` : `${p.color}15`,
-            scale: hovered ? 1.05 : 1,
-          }}
-          transition={{ duration: 0.25 }}
-          style={{ color: p.color, border: `1px solid ${p.color}40` }}
-        >
-          {p.cat}
-        </motion.span>
-
-        {/* Hover overlay — subtle glow */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{ opacity: hovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-          style={{
-            background: `radial-gradient(circle at center, ${p.color}10 0%, transparent 70%)`,
-          }}
-        />
-      </div>
-
-      {/* ── CARD BODY ── */}
+      {/* ── BODY ── */}
       <div className="p-5 flex flex-col flex-1">
-        {/* Title */}
         <motion.h3
           className="font-display font-bold text-base mb-2"
           animate={{ color: hovered ? p.color : "var(--ink)" }}
@@ -358,9 +371,8 @@ function ProjectCard({ p, onOpen }) {
           )}
         </div>
 
-        {/* Action Buttons */}
+        {/* Buttons */}
         <div className="flex gap-2">
-          {/* See Details */}
           <motion.button
             onClick={() => onOpen(p)}
             className="flex-1 py-2.5 rounded-xl text-xs font-bold font-display flex items-center justify-center gap-1.5 overflow-hidden relative"
@@ -376,7 +388,7 @@ function ProjectCard({ p, onOpen }) {
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
           >
-            {/* Shimmer on hover */}
+            {/* Shimmer */}
             <motion.div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -401,7 +413,6 @@ function ProjectCard({ p, onOpen }) {
             </motion.span>
           </motion.button>
 
-          {/* Live Demo */}
           <motion.a
             href={p.liveUrl}
             target="_blank"
@@ -459,126 +470,214 @@ function ProjectModal({ project: p, onClose }) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* ── BANNER ── */}
-        <div
-          className="relative h-56 flex items-center justify-center overflow-hidden rounded-t-3xl"
-          style={{
-            background: `linear-gradient(135deg, ${p.cardBg}, ${p.color}18)`,
-          }}
-        >
-          {/* Animated watercolor blobs */}
-          {[
-            {
-              w: "190px",
-              h: "150px",
-              t: "4px",
-              l: "20px",
-              c: "var(--wc-pink)",
-              delay: 0,
-            },
-            {
-              w: "160px",
-              h: "130px",
-              b: "0",
-              r: "28px",
-              c: "var(--wc-blue)",
-              delay: 0.1,
-            },
-            {
-              w: "140px",
-              h: "110px",
-              t: "20px",
-              r: "96px",
-              c: "var(--wc-yellow)",
-              delay: 0.18,
-            },
-          ].map((b, i) => (
-            <motion.div
-              key={i}
-              className="blob absolute"
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 0.9, scale: 1 }}
-              transition={{ delay: b.delay, duration: 0.6, ease: "backOut" }}
+        {/* ── BANNER (tall image or watercolor) ── */}
+        <div className="relative rounded-t-3xl overflow-hidden">
+          {p.image ? (
+            /* Real screenshot */
+            <div className="relative h-64">
+              <Image
+                src={p.image}
+                alt={p.title}
+                fill
+                className="object-cover"
+              />
+              {/* Dark gradient overlay so text is readable */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)",
+                }}
+              />
+
+              {/* Bottom title overlay */}
+              <div className="absolute bottom-0 left-0 right-0 px-6 pb-5 z-10">
+                <span
+                  className="inline-block text-xs font-bold font-display px-3 py-1 rounded-full mb-2"
+                  style={{
+                    background: `${p.color}30`,
+                    color: "#fff",
+                    border: `1px solid ${p.color}55`,
+                    backdropFilter: "blur(6px)",
+                  }}
+                >
+                  {p.cat}
+                </span>
+                <h2 className="font-display font-bold text-2xl text-white leading-tight">
+                  {p.title}
+                </h2>
+              </div>
+
+              {/* Close button */}
+              <motion.button
+                initial={{ opacity: 0, scale: 0.7 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.15 }}
+                whileHover={{ scale: 1.12, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={onClose}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center border z-20"
+                style={{
+                  background: "rgba(0,0,0,0.5)",
+                  borderColor: "rgba(255,255,255,0.2)",
+                  color: "#fff",
+                  backdropFilter: "blur(6px)",
+                }}
+              >
+                <FiX size={17} />
+              </motion.button>
+            </div>
+          ) : (
+            /* Watercolor placeholder banner */
+            <div
+              className="relative h-56 flex items-center justify-center overflow-hidden"
               style={{
-                width: b.w,
-                height: b.h,
-                top: b.t,
-                left: b.l,
-                bottom: b.b,
-                right: b.r,
-                background: b.c,
+                background: `linear-gradient(135deg, ${p.cardBg}, ${p.color}18)`,
               }}
-            />
-          ))}
+            >
+              {/* Animated blobs */}
+              {[
+                {
+                  w: "190px",
+                  h: "150px",
+                  t: "4px",
+                  l: "20px",
+                  c: "var(--wc-pink)",
+                  d: 0,
+                },
+                {
+                  w: "160px",
+                  h: "130px",
+                  b: "0",
+                  r: "28px",
+                  c: "var(--wc-blue)",
+                  d: 0.1,
+                },
+                {
+                  w: "140px",
+                  h: "110px",
+                  t: "20px",
+                  r: "96px",
+                  c: "var(--wc-yellow)",
+                  d: 0.18,
+                },
+              ].map((b, i) => (
+                <motion.div
+                  key={i}
+                  className="blob absolute"
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 0.9, scale: 1 }}
+                  transition={{ delay: b.d, duration: 0.6, ease: "backOut" }}
+                  style={{
+                    width: b.w,
+                    height: b.h,
+                    top: b.t,
+                    left: b.l,
+                    bottom: b.b,
+                    right: b.r,
+                    background: b.c,
+                  }}
+                />
+              ))}
 
-          {/* Big emoji */}
-          <motion.div
-            initial={{ scale: 0.3, opacity: 0, rotate: -15 }}
-            animate={{ scale: 1, opacity: 1, rotate: 0 }}
-            transition={{ delay: 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10"
-            style={{
-              fontSize: "96px",
-              filter: `drop-shadow(0 12px 28px ${p.color}44)`,
-            }}
-          >
-            {p.emoji}
-          </motion.div>
+              <motion.span
+                initial={{ scale: 0.3, opacity: 0, rotate: -15 }}
+                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                transition={{
+                  delay: 0.1,
+                  duration: 0.6,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="relative z-10"
+                style={{
+                  fontSize: "96px",
+                  filter: `drop-shadow(0 12px 28px ${p.color}44)`,
+                }}
+              >
+                {p.emoji}
+              </motion.span>
 
-          {/* Category */}
-          <motion.span
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.25 }}
-            className="absolute top-4 left-5 text-xs font-bold font-display px-3 py-1.5 rounded-full"
-            style={{
-              background: `${p.color}22`,
-              color: p.color,
-              border: `1px solid ${p.color}45`,
-            }}
-          >
-            {p.cat}
-          </motion.span>
+              <motion.span
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.25 }}
+                className="absolute top-4 left-5 text-xs font-bold font-display px-3 py-1.5 rounded-full"
+                style={{
+                  background: `${p.color}22`,
+                  color: p.color,
+                  border: `1px solid ${p.color}45`,
+                }}
+              >
+                {p.cat}
+              </motion.span>
 
-          {/* Close */}
-          <motion.button
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            whileHover={{
-              scale: 1.12,
-              rotate: 90,
-              backgroundColor: "var(--orange-pale)",
-            }}
-            whileTap={{ scale: 0.9 }}
-            onClick={onClose}
-            className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center border z-20"
-            style={{
-              background: "var(--card)",
-              borderColor: "var(--border)",
-              color: "var(--muted)",
-            }}
-          >
-            <FiX size={17} />
-          </motion.button>
+              <motion.button
+                initial={{ opacity: 0, scale: 0.7 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                whileHover={{
+                  scale: 1.12,
+                  rotate: 90,
+                  backgroundColor: "var(--orange-pale)",
+                }}
+                whileTap={{ scale: 0.9 }}
+                onClick={onClose}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center border z-20"
+                style={{
+                  background: "var(--card)",
+                  borderColor: "var(--border)",
+                  color: "var(--muted)",
+                }}
+              >
+                <FiX size={17} />
+              </motion.button>
+            </div>
+          )}
         </div>
 
         {/* ── CONTENT ── */}
         <div className="p-7">
-          {/* Title + meta */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18 }}
-            className="mb-6"
-          >
-            <h2
-              className="font-display font-bold text-2xl mb-3"
-              style={{ color: "var(--ink)" }}
+          {/* Title + meta — only show if image exists (title already shown in overlay above) */}
+          {!p.image && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.18 }}
+              className="mb-6"
             >
-              {p.title}
-            </h2>
-            <div className="flex flex-wrap gap-4">
+              <h2
+                className="font-display font-bold text-2xl mb-3"
+                style={{ color: "var(--ink)" }}
+              >
+                {p.title}
+              </h2>
+              <div className="flex flex-wrap gap-4">
+                <div
+                  className="flex items-center gap-1.5 text-xs"
+                  style={{ color: "var(--muted)" }}
+                >
+                  <FiCalendar size={12} style={{ color: p.color }} />
+                  {p.date}
+                </div>
+                <div
+                  className="flex items-center gap-1.5 text-xs"
+                  style={{ color: "var(--muted)" }}
+                >
+                  <FiUsers size={12} style={{ color: p.color }} />
+                  {p.role}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* If image exists, show meta below image */}
+          {p.image && (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="flex flex-wrap gap-4 mb-6"
+            >
               <div
                 className="flex items-center gap-1.5 text-xs"
                 style={{ color: "var(--muted)" }}
@@ -593,8 +692,8 @@ function ProjectModal({ project: p, onClose }) {
                 <FiUsers size={12} style={{ color: p.color }} />
                 {p.role}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-3 mb-7">
@@ -743,7 +842,7 @@ function ProjectModal({ project: p, onClose }) {
             </div>
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -754,7 +853,7 @@ function ProjectModal({ project: p, onClose }) {
               href={p.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-3.5 rounded-xl text-sm font-bold font-display flex items-center justify-center gap-2 relative overflow-hidden"
+              className="flex-1 py-3.5 rounded-xl text-sm font-bold font-display flex items-center justify-center gap-2 overflow-hidden relative"
               style={{
                 background: "var(--orange)",
                 color: "#fff",
@@ -804,21 +903,18 @@ function ProjectModal({ project: p, onClose }) {
 }
 
 /* ══════════════════════════════
-   FILTER BUTTON with animation
+   FILTER BUTTON
 ══════════════════════════════ */
 function FilterBtn({ cat, active, onClick }) {
   return (
     <motion.button
       onClick={() => onClick(cat)}
       className="relative px-5 py-2 rounded-full text-sm font-bold font-display overflow-hidden"
-      animate={{
-        color: active ? "#fff" : "var(--muted)",
-      }}
+      animate={{ color: active ? "#fff" : "var(--muted)" }}
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.94 }}
       transition={{ duration: 0.2 }}
     >
-      {/* Active pill bg */}
       <AnimatePresence>
         {active && (
           <motion.span
@@ -835,7 +931,6 @@ function FilterBtn({ cat, active, onClick }) {
           />
         )}
       </AnimatePresence>
-      {/* Hover bg for inactive */}
       {!active && (
         <motion.span
           className="absolute inset-0 rounded-full"
@@ -849,9 +944,6 @@ function FilterBtn({ cat, active, onClick }) {
   );
 }
 
-/* ══════════════════════════════
-   MAIN EXPORT
-══════════════════════════════ */
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
@@ -892,11 +984,11 @@ export default function Projects() {
         </div>
         <div className="absolute bottom-0 left-0 w-[320px] h-[240px] pointer-events-none">
           <div
-            className="blob absolute w-[170px] h-[140px] bottom-6  left-8"
+            className="blob absolute w-[170px] h-[140px] bottom-6 left-8"
             style={{ background: "var(--wc-green)", opacity: 1 }}
           />
           <div
-            className="blob absolute w-[140px] h-[115px] bottom-18 left-22"
+            className="blob absolute w-[140px] h-[115px] bottom-16 left-20"
             style={{ background: "var(--wc-yellow)", opacity: 1 }}
           />
         </div>
@@ -912,7 +1004,7 @@ export default function Projects() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.1, duration: 0.5 }}
+              transition={{ delay: 0.1 }}
               className="sec-tag"
             >
               Portfolio
@@ -932,7 +1024,7 @@ export default function Projects() {
             </p>
           </motion.div>
 
-          {/* Filter tabs */}
+          {/* Filter */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -967,7 +1059,6 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
           <ProjectModal project={selectedProject} onClose={closeModal} />

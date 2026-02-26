@@ -1,54 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+
 import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaGithub,
-  FaReact,
-  FaNodeJs,
-  FaFigma,
-} from "react-icons/fa";
-import { SiNextdotjs } from "react-icons/si";
-
-const roles = [
-  "Full Stack Developer",
-  "React Specialist",
-  "Node.js Engineer",
-  "UI/UX Enthusiast",
-];
-
-const techBadges = [
-  {
-    label: "React.js",
-    color: "#61dafb",
-    Icon: FaReact,
-    pos: "top-[-10%] right-[30%]",
-    anim: "float1",
-  },
-  {
-    label: "Node.js",
-    color: "#6cc24a",
-    Icon: FaNodeJs,
-    pos: "top-[38%] right-[-19%]",
-    anim: "float2",
-  },
-  {
-    label: "Next.js",
-    color: "#818cf8",
-    Icon: SiNextdotjs,
-    pos: "bottom-[28%] right-[-20%]",
-    anim: "float3",
-  },
-  {
-    label: "Figma",
-    color: "#f24e1e",
-    Icon: FaFigma,
-    pos: "top-[20%] left-[-19%]",
-    anim: "float2",
-  },
-];
+  colorTiles,
+  heroShapes,
+  roles,
+  socailMedia,
+  techBadges,
+} from "@/data/data";
 
 export default function Hero() {
   const [typed, setTyped] = useState("");
@@ -104,71 +64,7 @@ export default function Hero() {
         className="absolute top-0 right-0 w-[640px] h-[640px] pointer-events-none"
         style={{ zIndex: 0 }}
       >
-        {[
-          {
-            w: "320px",
-            h: "260px",
-            t: "10px",
-            r: "64px",
-            c: "var(--wc-pink)",
-            o: 0.9,
-            delay: "0s",
-          },
-          {
-            w: "280px",
-            h: "220px",
-            t: "80px",
-            r: "8px",
-            c: "var(--wc-purple)",
-            o: 0.85,
-            delay: "1.2s",
-          },
-          {
-            w: "240px",
-            h: "200px",
-            t: "0",
-            r: "160px",
-            c: "var(--wc-blue)",
-            o: 0.8,
-            delay: "2.4s",
-          },
-          {
-            w: "200px",
-            h: "180px",
-            t: "128px",
-            r: "208px",
-            c: "var(--wc-green)",
-            o: 0.75,
-            delay: "0.8s",
-          },
-          {
-            w: "220px",
-            h: "160px",
-            t: "8px",
-            r: "112px",
-            c: "var(--wc-yellow)",
-            o: 0.75,
-            delay: "3s",
-          },
-          {
-            w: "180px",
-            h: "140px",
-            t: "176px",
-            r: "80px",
-            c: "var(--wc-coral)",
-            o: 0.8,
-            delay: "1.8s",
-          },
-          {
-            w: "160px",
-            h: "130px",
-            t: "48px",
-            r: "256px",
-            c: "var(--wc-teal)",
-            o: 0.7,
-            delay: "0.4s",
-          },
-        ].map((b, i) => (
+        {colorTiles.map((b, i) => (
           <div
             key={i}
             className="blob blob-animate absolute"
@@ -190,35 +86,7 @@ export default function Hero() {
         className="absolute bottom-0 left-0 w-[360px] h-[280px] pointer-events-none"
         style={{ zIndex: 0 }}
       >
-        {[
-          {
-            w: "200px",
-            h: "160px",
-            b: "32px",
-            l: "32px",
-            c: "var(--wc-blue)",
-            o: 0.7,
-            delay: "2s",
-          },
-          {
-            w: "160px",
-            h: "130px",
-            b: "64px",
-            l: "80px",
-            c: "var(--wc-purple)",
-            o: 0.65,
-            delay: "1.4s",
-          },
-          {
-            w: "140px",
-            h: "110px",
-            b: "16px",
-            l: "144px",
-            c: "var(--wc-pink)",
-            o: 0.6,
-            delay: "2.8s",
-          },
-        ].map((b, i) => (
+        {heroShapes.map((b, i) => (
           <div
             key={i}
             className="blob blob-animate absolute"
@@ -289,7 +157,7 @@ export default function Hero() {
                 className="text-base font-semibold font-display"
                 style={{ color: "var(--muted)" }}
               >
-                From Dhaka
+                From Dinajpur
               </span>
             </motion.div>
 
@@ -298,9 +166,10 @@ export default function Hero() {
               className="text-sm leading-relaxed mb-8 max-w-[440px]"
               style={{ color: "var(--muted)" }}
             >
-              I'm a passionate full stack developer based in Dhaka, Bangladesh.
-              I love building fast, beautiful web applications with clean code
-              and great user experiences.
+              I am a Full Stack Engineer and Competitive Programmer with a focus
+              on building high-performance web architectures. I love building
+              fast, beautiful web applications with clean code and great user
+              experiences.
             </motion.p>
 
             <motion.div variants={item} className="flex gap-4 flex-wrap mb-8">
@@ -327,18 +196,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.div variants={item} className="flex items-center gap-3">
-              {[
-                {
-                  icon: FaFacebookF,
-                  href: "https://www.facebook.com/topuray.han.94064",
-                },
-                { icon: FaTwitter, href: "https://x.com/Topu629308" },
-                {
-                  icon: FaLinkedinIn,
-                  href: "https://www.linkedin.com/in/topu-ray-han/",
-                },
-                { icon: FaGithub, href: "https://github.com/Topurayhan554" },
-              ].map(({ icon: Icon, href }, i) => (
+              {socailMedia.map(({ icon: Icon, href }, i) => (
                 <motion.a
                   key={i}
                   href={href}
@@ -360,7 +218,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="flex-shrink-0 relative"
-            style={{ width: "340px", height: "420px" }}
+            style={{ width: "340px", height: "340px" }}
           >
             {/* Photo card */}
             <div
@@ -385,8 +243,8 @@ export default function Hero() {
                 style={{ background: "var(--wc-green)", opacity: 0.6 }}
               />
 
-              <div className="relative z-10 w-full h-full flex items-center justify-center">
-                <img src="/favicon.ico" />
+              <div className="relative z-11 w-full h-full  flex items-center justify-center">
+                <img src="/topu2.png" />
               </div>
             </div>
 

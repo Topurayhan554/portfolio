@@ -8,7 +8,6 @@ import Footer from "@/components/Footer/page";
 import Hero from "@/components/Hero/page";
 import Navbar from "@/components/Navbar/page";
 import Projects from "@/components/Projects/page";
-import Services from "@/components/Service/page";
 import Skills from "@/components/Skill/page";
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <Services />
       <About />
       <Skills />
       <CompetitiveProgramming />

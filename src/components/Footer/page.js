@@ -1,6 +1,7 @@
 "use client";
+import { socailMedia } from "@/data/data";
 import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiTwitter, FiFacebook } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 
 const links = ["Home", "About", "Skills", "Projects", "Blog", "Contact"];
 
@@ -36,7 +37,7 @@ export default function Footer() {
                 className="font-display font-bold text-2xl"
                 style={{ color: "var(--orange)" }}
               >
-                RI
+                TR
               </span>
               <span className="font-display font-bold text-2xl text-white">
                 .dev
@@ -50,31 +51,37 @@ export default function Footer() {
               and scalable web applications.
             </p>
             <div className="flex gap-3">
-              {[FiGithub, FiLinkedin, FiTwitter, FiFacebook].map((Icon, i) => (
-                <motion.a
-                  key={i}
-                  href="#"
-                  whileHover={{ scale: 1.12, y: -2 }}
-                  className="w-9 h-9 rounded-xl flex items-center justify-center border transition-all"
-                  style={{
-                    borderColor: "rgba(255,255,255,0.12)",
-                    color: "rgba(255,255,255,0.5)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "var(--orange)";
-                    e.currentTarget.style.color = "var(--orange)";
-                    e.currentTarget.style.background = "rgba(255,107,43,0.1)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor =
-                      "rgba(255,255,255,0.12)";
-                    e.currentTarget.style.color = "rgba(255,255,255,0.5)";
-                    e.currentTarget.style.background = "transparent";
-                  }}
-                >
-                  <Icon size={15} />
-                </motion.a>
-              ))}
+              {socailMedia.map((item, i) => {
+                const Icon = item.icon;
+
+                return (
+                  <motion.a
+                    key={i}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.12, y: -2 }}
+                    className="w-9 h-9 rounded-xl flex items-center justify-center border transition-all"
+                    style={{
+                      borderColor: "rgba(255,255,255,0.12)",
+                      color: "rgba(255,255,255,0.5)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "var(--orange)";
+                      e.currentTarget.style.color = "var(--orange)";
+                      e.currentTarget.style.background = "rgba(255,107,43,0.1)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor =
+                        "rgba(255,255,255,0.12)";
+                      e.currentTarget.style.color = "rgba(255,255,255,0.5)";
+                      e.currentTarget.style.background = "transparent";
+                    }}
+                  >
+                    <Icon size={15} />
+                  </motion.a>
+                );
+              })}
             </div>
           </div>
 
@@ -115,9 +122,9 @@ export default function Footer() {
               className="space-y-3 text-sm"
               style={{ color: "rgba(255,255,255,0.45)" }}
             >
-              <div>📧 rafiqul@example.com</div>
-              <div>📱 +880 1234-567890</div>
-              <div>📍 Dhaka, Bangladesh</div>
+              <div>📧 topurayhantipu@gmail.com</div>
+              <div>📱 +880 1744406554</div>
+              <div>📍 Dinajpur, Bangladesh</div>
             </div>
             <motion.button
               whileHover={{ scale: 1.04 }}
@@ -136,7 +143,7 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
         >
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
-            © 2025 Rafiqul Islam. Built with Next.js & Tailwind CSS.
+            © 2025 Topu Rayhan. Built with Next.js & Tailwind CSS.
           </p>
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

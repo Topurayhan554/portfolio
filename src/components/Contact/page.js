@@ -16,19 +16,19 @@ const info = [
   {
     icon: FiMail,
     label: "Email",
-    val: "rafiqul@example.com",
+    val: "topurayhantipu@gmail.com",
     color: "#818cf8",
   },
   {
     icon: FiPhone,
     label: "Phone",
-    val: "+880 1234-567890",
+    val: "+880 01744406554",
     color: "var(--orange)",
   },
   {
     icon: FiMapPin,
     label: "Location",
-    val: "Dhaka, Bangladesh",
+    val: "Dinajpur, Bangladesh",
     color: "#34d399",
   },
 ];
@@ -151,36 +151,6 @@ export default function Contact() {
                 </div>
               </motion.div>
             ))}
-
-            {/* Social links */}
-            <div
-              className="p-5 rounded-2xl border"
-              style={{
-                background: "var(--card)",
-                borderColor: "var(--border)",
-                boxShadow: "var(--shadow-sm)",
-              }}
-            >
-              <div
-                className="text-xs font-bold font-display mb-4"
-                style={{ color: "var(--muted)" }}
-              >
-                FIND ME ON
-              </div>
-              <div className="flex gap-3">
-                {[FiGithub, FiLinkedin, FiTwitter].map((Icon, i) => (
-                  <motion.a
-                    key={i}
-                    href="#"
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="social-icon flex-1 rounded-xl"
-                    style={{ borderRadius: "12px" }}
-                  >
-                    <Icon size={17} />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
           </motion.div>
 
           {/* Right — form */}
@@ -209,7 +179,7 @@ export default function Contact() {
                   value={form.name}
                   required
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder="Rafiqul Islam"
+                  placeholder="Topu Rayhan"
                   className="form-input"
                 />
               </div>

@@ -75,11 +75,11 @@ export default function About() {
 
               <div className="w-full h-full flex items-center justify-center relative z-10">
                 {/* <span style={{ fontSize: "120px" }}>👨‍💼</span> */}
+
                 <img
                   src="/topu1.png"
                   alt="Topu"
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "top" }}
+                  className="object-cover object-top"
                 />
               </div>
             </div>
@@ -159,12 +159,12 @@ export default function About() {
                 {
                   icon: "💼",
                   title: "Experience",
-                  desc: "3+ years building production apps for startups & enterprises.",
+                  desc: "1+ years building production apps for startups & enterprises.",
                 },
                 {
                   icon: "🌍",
                   title: "Location",
-                  desc: "Dhaka, Bangladesh. Open to remote work globally.",
+                  desc: "Dinajpur, Bangladesh. Open to remote work globally.",
                 },
                 {
                   icon: "🎯",
