@@ -37,7 +37,7 @@ export default function About() {
             initial={{ opacity: 0, x: -36 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+            className="relative order-2 lg:order-1"
           >
             {/* Big decorative number */}
             <div
@@ -89,6 +89,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: 36 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
+            className="order-1 lg:order-2"
             transition={{
               duration: 0.75,
               delay: 0.15,

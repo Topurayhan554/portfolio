@@ -9,92 +9,9 @@ import {
   FiAward,
   FiTarget,
 } from "react-icons/fi";
-import { SiLeetcode, SiCodeforces, SiCodechef } from "react-icons/si";
-
-const platforms = [
-  {
-    id: "leetcode",
-    name: "LeetCode",
-    handle: "topu_5656",
-    url: "https://leetcode.com/u/QHH3Zx0zoF/",
-    Icon: SiLeetcode,
-    color: "#FFA116",
-    bgLight: "rgba(255,161,22,0.08)",
-    bgDark: "rgba(255,161,22,0.12)",
-    solved: 26,
-    total: 26,
-    rating: null,
-    ratingLabel: "Rating",
-    badge: "Knight",
-    badgeColor: "#b9c0c8",
-    stats: [
-      { label: "Easy", val: 13, color: "#34d399" },
-      { label: "Medium", val: 12, color: "#FFA116" },
-      { label: "Hard", val: 1, color: "#ef4444" },
-    ],
-    tagline: "Daily problem solver · Contest participant",
-  },
-  {
-    id: "codeforces",
-    name: "Codeforces",
-    handle: "topurayhantipu",
-    url: "https://codeforces.com/profile/topurayhantipu",
-    Icon: SiCodeforces,
-    color: "#1F8ACB",
-    bgLight: "rgba(31,138,203,0.08)",
-    bgDark: "rgba(31,138,203,0.12)",
-    solved: 442,
-    total: null,
-    rating: 1437,
-    ratingLabel: "Max Rating",
-    badge: "Specialist",
-    badgeColor: "#1F8ACB",
-    stats: [
-      { label: "Div 2 A/B", val: 210, color: "#34d399" },
-      { label: "Div 2 C/D", val: 130, color: "#1F8ACB" },
-      { label: "Div 2 E+", val: 40, color: "#818cf8" },
-    ],
-    tagline: "Codeforces Round participant · Graph & DP specialist",
-  },
-  {
-    id: "codechef",
-    name: "CodeChef",
-    handle: "topu_5656",
-    url: "https://www.codechef.com/users/topu_5656",
-    Icon: SiCodechef,
-    color: "#5B4638",
-    bgLight: "rgba(91,70,56,0.08)",
-    bgDark: "rgba(91,70,56,0.12)",
-    solved: 247,
-    total: null,
-    rating: 1629,
-    ratingLabel: "Rating",
-    badge: "3★",
-    badgeColor: "#3b82f6",
-    stats: [
-      { label: "Long Chall.", val: 115, color: "#34d399" },
-      { label: "Cook-Off", val: 71, color: "#f59e0b" },
-      { label: "Lunchtime", val: 61, color: "#ec4899" },
-    ],
-    tagline: "3★ rated · Long Challenge expert",
-  },
-];
+import { platforms, topics } from "@/data/data";
 
 const totalSolved = platforms.reduce((a, p) => a + p.solved, 0);
-
-/* ── Topic Tags ── */
-const topics = [
-  { name: "Dynamic Programming", count: 180, color: "#818cf8" },
-  { name: "Graph Theory", count: 145, color: "#34d399" },
-  { name: "Binary Search", count: 120, color: "#38bdf8" },
-  { name: "Tree / BST", count: 110, color: "#f59e0b" },
-  { name: "Greedy", count: 98, color: "#ec4899" },
-  { name: "Segment Tree", count: 72, color: "#a78bfa" },
-  { name: "Two Pointers", count: 68, color: "#34d399" },
-  { name: "Backtracking", count: 55, color: "#fb923c" },
-  { name: "Number Theory", count: 48, color: "#f43f5e" },
-  { name: "Bit Manipulation", count: 42, color: "#0ea5e9" },
-];
 
 /* ── Animated counter hook ── */
 function useCounter(target, inView, duration = 1600, delay = 0) {

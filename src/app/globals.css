@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* ══════════════════════════════════════
-   LIGHT THEME (default)
-══════════════════════════════════════ */
 :root {
   --font-display: "Poppins", sans-serif;
   --font-body: "DM Sans", sans-serif;
@@ -33,7 +30,6 @@
   --footer-text: rgba(255, 255, 255, 0.45);
   --footer-border: rgba(255, 255, 255, 0.07);
 
-  /* Watercolor — vibrant in light mode */
   --wc-pink: rgba(255, 182, 193, 0.6);
   --wc-purple: rgba(197, 162, 255, 0.55);
   --wc-blue: rgba(147, 210, 255, 0.55);
@@ -43,9 +39,7 @@
   --wc-teal: rgba(153, 234, 232, 0.5);
 }
 
-/* ══════════════════════════════════════
-   DARK THEME
-══════════════════════════════════════ */
+
 [data-theme="dark"] {
   --bg: #0d0d1a;
   --bg-soft: #111120;
@@ -72,7 +66,6 @@
   --footer-text: rgba(255, 255, 255, 0.35);
   --footer-border: rgba(255, 255, 255, 0.05);
 
-  /* Watercolor — very subtle in dark mode so they don't clash */
   --wc-pink: rgba(255, 182, 193, 0.07);
   --wc-purple: rgba(197, 162, 255, 0.09);
   --wc-blue: rgba(147, 210, 255, 0.07);
@@ -82,9 +75,6 @@
   --wc-teal: rgba(153, 234, 232, 0.06);
 }
 
-/* ══════════════════════════════════════
-   BASE
-══════════════════════════════════════ */
 
 html {
   scroll-behavior: smooth;
