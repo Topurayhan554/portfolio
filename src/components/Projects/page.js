@@ -31,9 +31,9 @@ const cardVariants = {
   },
 };
 
-/* ══════════════════════════════════════════
+/* 
    IMAGE AREA — used in both Card + Modal
-══════════════════════════════════════════ */
+ */
 function ProjectImage({
   p,
   hovered = false,
@@ -149,9 +149,9 @@ function ProjectImage({
   );
 }
 
-/* ══════════════════════════════
+/* 
    PROJECT CARD
-══════════════════════════════ */
+ */
 function ProjectCard({ p, onOpen }) {
   const [hovered, setHovered] = useState(false);
 
@@ -305,9 +305,9 @@ function ProjectCard({ p, onOpen }) {
   );
 }
 
-/* ══════════════════════════════
+/* 
    MODAL
-══════════════════════════════ */
+ */
 function ProjectModal({ project: p, onClose }) {
   return (
     <motion.div
@@ -766,9 +766,9 @@ function ProjectModal({ project: p, onClose }) {
   );
 }
 
-/* ══════════════════════════════
+/* 
    FILTER BUTTON
-══════════════════════════════ */
+ */
 function FilterBtn({ cat, active, onClick }) {
   return (
     <motion.button

@@ -69,7 +69,7 @@ export default function Navbar() {
   const handleDownload = () => {
     const a = document.createElement("a");
     a.href = "/TOPU RAYHAN _ FULL STACK DEVELOPER.pdf";
-    a.download = "TOPU RAYHAN_FULL STACK DEVELOPER.pdf";
+    a.download = "TOPU RAYHAN _ FULL STACK DEVELOPER.pdf";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
