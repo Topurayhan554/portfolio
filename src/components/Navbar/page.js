@@ -65,14 +65,19 @@ export default function Navbar() {
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
   };
-
   const handleDownload = () => {
-    const a = document.createElement("a");
-    a.href = "/TOPU RAYHAN _ FULL STACK DEVELOPER.pdf";
-    a.download = "TOPU RAYHAN _ FULL STACK DEVELOPER.pdf";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const fileId = "1saq3mny1aX1396GUOxrvoa9-KD0EGiXk";
+
+    // New tab-এ preview open
+    window.open(`https://drive.google.com/file/d/${fileId}/view`, "_blank");
+
+
+    setTimeout(() => {
+      window.open(
+        `https://drive.google.com/uc?export=download&id=${fileId}`,
+        "_blank",
+      );
+    }, 300);
   };
 
   const isDark = theme === "dark";
