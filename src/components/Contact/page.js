@@ -47,7 +47,7 @@ export default function Contact() {
     e.preventDefault();
     setStatus("loading");
     try {
-      await axios.post("http://localhost:5000/api/contact", form);
+      await axios.post("/api/contact", form);
       setStatus("success");
       setForm({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setStatus("idle"), 4000);

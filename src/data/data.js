@@ -457,7 +457,7 @@ export const projects = [
     id: 7,
     title: "Football Ticket Booking System",
     cat: "Backend",
-    image: "/football-ticket-booking.png",
+    image: "/devpulse.png",
     desc: "Database design & SQL query assignment for a football match ticket booking platform.",
     longDesc:
       "A database design assignment modeling a football ticket booking system with three related tables — users, matches, and bookings — connected through one-to-many relationships (one user to many bookings, many bookings to one match). Includes a full PostgreSQL schema with sample data and seven SQL queries covering filtered lookups, case-insensitive search with ILIKE, NULL handling with COALESCE, multi-table INNER and LEFT JOINs, subqueries for above-average values, and pagination with OFFSET/LIMIT. The entity relationship diagram was designed in Draw.io.",
