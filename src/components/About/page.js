@@ -109,9 +109,10 @@ export default function About() {
               className="text-sm leading-relaxed mb-4"
               style={{ color: "var(--muted)" }}
             >
-              Hello! I'm a full stack web developer, and I'm very passionate and
-              dedicated to my work. With 1+ years of experience, I have acquired
-              the skills and knowledge necessary to make your project a success.
+              Hi, I'm a Full-Stack Web Developer with a strong foundation in
+              problem-solving and modern web architecture. I turn complex ideas
+              into scalable, user-centric digital solutions that deliver real
+              business value.
             </p>
             <p
               className="text-sm leading-relaxed mb-8"
@@ -119,17 +120,17 @@ export default function About() {
             >
               I specialize in{" "}
               <strong style={{ color: "var(--ink)" }}>
-                React, Next.js, Node.js, Express.js
+                TypeScript, Next.js, Node.js, Express.js,
               </strong>
-              , and modern web technologies. I believe in writing clean,
-              maintainable code that scales.
+              , I focus on building fast, responsive, and maintainable web
+              applications tailored to meet client goals.
             </p>
 
             {/* Stats */}
             <div className="flex gap-8 mb-8 flex-wrap">
               {[
-                ["1+", "Years Exp."],
-                ["10+", "Projects"],
+                ["2+", "Years Exp."],
+                ["20+", "Projects"],
                 ["1000+", "Problem Solve"],
               ].map(([n, l]) => (
                 <div key={l} className="text-center">
@@ -155,22 +156,22 @@ export default function About() {
                 {
                   icon: "🎓",
                   title: "Education",
-                  desc: "I have completed my HSC from the Science group. Currently, I am studying Botany at Dinajpur Adarsha College.",
+                  desc: "Science background in HSC; currently pursuing Bachelor's in Botany at Dinajpur Adarsha College.",
                 },
                 {
                   icon: "💼",
                   title: "Experience",
-                  desc: "1+ years building production apps for startups & enterprises.",
+                  desc: "2+ years of hands-on experience building web apps with modern JavaScript & Typescript frameworks.",
                 },
                 {
                   icon: "🌍",
                   title: "Location",
-                  desc: "Dinajpur, Bangladesh. Open to remote work globally.",
+                  desc: "Based in Dinajpur, Bangladesh — available for remote roles worldwide.",
                 },
                 {
                   icon: "🎯",
                   title: "Philosophy",
-                  desc: "Clean code + great UX + business impact.",
+                  desc: "Clean code, optimal performance, and intuitive user experiences.",
                 },
               ].map((c) => (
                 <div
