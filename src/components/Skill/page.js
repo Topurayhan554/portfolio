@@ -1,27 +1,37 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FaGitAlt, FaAws, FaLinux, FaGithub } from "react-icons/fa";
-import { SiFigma, SiPostman, SiVercel, SiNetlify } from "react-icons/si";
+import { FaDocker, FaGithub } from "react-icons/fa6";
+import {
+  SiFigma,
+  SiPostman,
+  SiVercel,
+  SiNetlify,
+  SiPostgresql,
+  SiPrisma,
+} from "react-icons/si";
 
 import { VscVscode } from "react-icons/vsc";
 const skills = [
   { name: "React / Next.js", level: 92, color: "#818cf8" },
-  { name: "JavaScript", level: 88, color: "#f97316" },
-  { name: "TypeScript", level: 25, color: "#ef4444" },
+  { name: "TypeScript", level: 90, color: "#3178c6" },
+  { name: "JavaScript", level: 95, color: "#f97316" },
   { name: "Node.js / Express", level: 84, color: "#34d399" },
+  { name: "PostgreSQL", level: 93, color: "#4169e1" },
+  { name: "Prisma ORM", level: 85, color: "#5a67d8" },
   { name: "Tailwind CSS", level: 94, color: "#38bdf8" },
-  { name: "MongoDB", level: 78, color: "#f59e0b" },
-  { name: "Vercel / Netlify", level: 70, color: "#ec4899" },
+  { name: "MongoDB", level: 88, color: "#f59e0b" },
 ];
 
 const tools = [
   { name: "VS Code", Icon: VscVscode, color: "#007acc" },
-  { name: "Figma", Icon: SiFigma, color: "#f24e1e" },
-  { name: "GitHub", Icon: FaGithub, color: "#181717" },
-  { name: "Netlify", Icon: SiNetlify, color: "#2496ed" },
+  { name: "GitHub", Icon: FaGithub, color: "#f0f6fc" },
+  { name: "Prisma", Icon: SiPrisma, color: "#5a67d8" },
+  { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169e1" },
   { name: "Postman", Icon: SiPostman, color: "#ff6c37" },
+  { name: "Docker", Icon: FaDocker, color: "#2496ed" },
   { name: "Vercel", Icon: SiVercel, color: "#000000" },
+  { name: "Netlify", Icon: SiNetlify, color: "#00c7b7" },
 ];
 
 export default function Skills() {
