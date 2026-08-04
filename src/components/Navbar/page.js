@@ -71,7 +71,6 @@ export default function Navbar() {
     // New tab-এ preview open
     window.open(`https://drive.google.com/file/d/${fileId}/view`, "_blank");
 
-
     setTimeout(() => {
       window.open(
         `https://drive.google.com/uc?export=download&id=${fileId}`,

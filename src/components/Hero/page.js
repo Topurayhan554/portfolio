@@ -59,7 +59,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ paddingTop: "80px", background: "var(--bg)" }}
     >
-      {/* ── WATERCOLOR BLOBS (top-right rainbow splash) ── */}
+      {/* ── WATERCOLOR BLOBS  ── */}
       <div
         className="absolute top-0 right-0 w-[640px] h-[640px] pointer-events-none"
         style={{ zIndex: 0 }}
@@ -166,10 +166,9 @@ export default function Hero() {
               className="text-sm leading-relaxed mb-8 max-w-[440px]"
               style={{ color: "var(--muted)" }}
             >
-              I am a Full Stack Engineer and Competitive Programmer with a focus
-              on building high-performance web architectures. I love building
-              fast, beautiful web applications with clean code and great user
-              experiences.
+              Full Stack Engineer & Competitive Programmer | Architecting
+              high-performance, AI-integrated web applications with clean code
+              and intuitive design.
             </motion.p>
 
             <motion.div variants={item} className="flex gap-4 flex-wrap mb-8">
@@ -277,13 +276,13 @@ export default function Hero() {
                 className="font-display font-bold text-2xl"
                 style={{ color: "var(--orange)", lineHeight: 1 }}
               >
-                1+
+                2+
               </div>
               <div
                 className="text-xs font-body"
                 style={{ color: "var(--muted)" }}
               >
-                Year of
+                Years of
                 <br />
                 Experience
               </div>
@@ -298,7 +297,7 @@ export default function Hero() {
                 className="font-display font-bold text-2xl"
                 style={{ color: "var(--orange)", lineHeight: 1 }}
               >
-                10+
+                20+
               </div>
               <div
                 className="text-xs font-body"

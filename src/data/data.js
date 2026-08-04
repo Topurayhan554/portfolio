@@ -12,13 +12,16 @@ import {
   SiLeetcode,
   SiCodeforces,
   SiCodechef,
+  SiPrisma,
+  SiTypescript,
+  SiPostgresql,
 } from "react-icons/si";
 
 export const roles = [
-  "Full Stack Developer",
-  "React Specialist",
-  "Node.js Engineer",
-  "UI/UX Enthusiast",
+  "Full Stack Engineer (Next.js & TypeScript)",
+  "Database & ORM Developer (PostgreSQL & Prisma)",
+  "AI Integration Specialist",
+  "Algorithmic Problem Solver",
 ];
 
 export const techBadges = [
@@ -26,13 +29,13 @@ export const techBadges = [
     label: "React.js",
     color: "#61dafb",
     Icon: FaReact,
-    pos: "top-[-10%] right-[30%]",
+    pos: "top-[-7%] right-[30%]",
     anim: "float1",
   },
   {
-    label: "Node.js",
-    color: "#6cc24a",
-    Icon: FaNodeJs,
+    label: "TypeScript",
+    color: "#3178c6",
+    Icon: SiTypescript,
     pos: "top-[38%] right-[-19%]",
     anim: "float2",
   },
@@ -40,15 +43,22 @@ export const techBadges = [
     label: "Next.js",
     color: "#818cf8",
     Icon: SiNextdotjs,
-    pos: "bottom-[28%] right-[-20%]",
+    pos: "bottom-[20%] right-[-20%]",
     anim: "float3",
   },
   {
-    label: "Figma",
-    color: "#f24e1e",
-    Icon: FaFigma,
+    label: "Prisma",
+    color: "#2d3748",
+    Icon: SiPrisma,
     pos: "top-[20%] left-[-19%]",
     anim: "float2",
+  },
+  {
+    label: "PostgreSQL",
+    color: "#4169e1",
+    Icon: SiPostgresql,
+    pos: "bottom-[-8%] left-[40%]",
+    anim: "float1",
   },
 ];
 
