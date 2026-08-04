@@ -1,21 +1,30 @@
 import {
   FaFacebookF,
-  FaFigma,
   FaGithub,
   FaLinkedinIn,
   FaNodeJs,
+  FaPaw,
   FaReact,
   FaTwitter,
 } from "react-icons/fa";
 import {
   SiNextdotjs,
+  SiTypescript,
+  SiPrisma,
+  SiPostgresql,
   SiLeetcode,
   SiCodeforces,
   SiCodechef,
-  SiPrisma,
-  SiTypescript,
-  SiPostgresql,
 } from "react-icons/si";
+import {
+  FiUsers,
+  FiTrendingUp,
+  FiZap,
+  FiCreditCard,
+  FiDatabase,
+  FiShoppingCart,
+  FiSmartphone,
+} from "react-icons/fi";
 
 export const roles = [
   "Full Stack Engineer (Next.js & TypeScript)",
@@ -170,6 +179,7 @@ export const heroShapes = [
     delay: "2.8s",
   },
 ];
+
 export const projects = [
   {
     id: 1,
@@ -195,9 +205,9 @@ export const projects = [
     color: "#10b981",
     cardBg: "rgba(16,185,129,0.1)",
     stats: [
-      { icon: "👥", label: "Roles", val: "3" },
-      { icon: "📈", label: "Efficiency", val: "+70%" },
-      { icon: "⚡", label: "Load", val: "<2s" },
+      { Icon: FiUsers, label: "Roles", val: "3" },
+      { Icon: FiTrendingUp, label: "Efficiency", val: "+70%" },
+      { Icon: FiZap, label: "Load", val: "<2s" },
     ],
     features: [
       "Role-based authentication (Admin, Manager, Buyer)",
@@ -244,9 +254,9 @@ export const projects = [
     color: "#7c3aed",
     cardBg: "rgba(124,58,237,0.1)",
     stats: [
-      { icon: "👥", label: "Roles", val: "3" },
-      { icon: "🤖", label: "AI", val: "CV Analyzer" },
-      { icon: "💼", label: "Jobs", val: "10,000+" },
+      { Icon: FiUsers, label: "Roles", val: "3" },
+      { Icon: FiZap, label: "AI", val: "CV Analyzer" },
+      { Icon: FiShoppingCart, label: "Jobs", val: "10,000+" },
     ],
     features: [
       "Role-based access (Seeker, Employer, Admin)",
@@ -269,9 +279,56 @@ export const projects = [
     role: "Full Stack Developer",
     duration: "2 months",
   },
-
   {
-    id: 3,
+    id: 5,
+    title: "RentNest — Rental Property Marketplace",
+    cat: "Full Stack",
+    image: "", // TODO: screenshot path diyo, e.g. "/rentnest.png"
+    desc: "Full-stack rental property marketplace with role-based access for tenants, landlords, and admins.",
+    longDesc:
+      "RentNest is a production-style rental property marketplace built as a full-stack assignment. The backend is a modular REST API built with Express, TypeScript, and Prisma ORM on PostgreSQL, covering auth, user, category, property, rental request, payment, review, and admin modules. Implements cookie-based JWT authentication with role-based routing for TENANT, LANDLORD, and ADMIN roles, secure JWT sign options, and a shared payload interface across services. Integrates Stripe for payments with webhook handling. The Next.js frontend uses the App Router with TypeScript, shadcn/ui, and Tailwind CSS, featuring Server Actions, useActionState for form handling, and Suspense with Skeleton loaders for a smooth loading experience. Deployed on Vercel, with backend ESM/TypeScript compilation issues resolved through custom vercel.json rewrites.",
+    tech: [
+      "Next.js 14",
+      "TypeScript",
+      "Express.js",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Stripe",
+      "JWT",
+      "Zod",
+    ],
+    emoji: "🏠",
+    color: "#f59e0b",
+    cardBg: "rgba(245,158,11,0.1)",
+    stats: [
+      { Icon: FiUsers, label: "Roles", val: "3" },
+      { Icon: FiCreditCard, label: "Payments", val: "Stripe" },
+      { Icon: FiDatabase, label: "DB", val: "PostgreSQL" },
+    ],
+    features: [
+      "Role-based access (Tenant, Landlord, Admin)",
+      "Cookie-based JWT authentication",
+      "Property listing, search & detail pages",
+      "Rental request & approval workflow",
+      "Stripe payment integration with webhooks",
+      "Review & rating system",
+      "Server Actions with useActionState for forms",
+      "Suspense + Skeleton loading states",
+      "Admin dashboard for platform management",
+      "Multi-file Prisma schema architecture",
+    ],
+    liveUrl: "", // TODO: deployed frontend URL
+    apiUrl: "", // TODO: deployed backend URL
+    sourceUrl: "", // TODO: frontend GitHub repo
+    backendRepo: "", // TODO: backend GitHub repo
+    date: "July 2026",
+    role: "Full Stack Developer",
+    duration: "1 month",
+  },
+  {
+    id: 4,
     title: "PawMart Pet Shop",
     cat: "Full Stack",
     image: "/pawmart.png",
@@ -291,9 +348,9 @@ export const projects = [
     color: "#f59e0b",
     cardBg: "rgba(245,158,11,0.1)",
     stats: [
-      { icon: "🐕", label: "Pets", val: "Adopt" },
-      { icon: "🛒", label: "Shop", val: "Products" },
-      { icon: "📱", label: "Mobile", val: "Responsive" },
+      { Icon: FaPaw, label: "Pets", val: "Adopt" },
+      { Icon: FiShoppingCart, label: "Shop", val: "Products" },
+      { Icon: FiSmartphone, label: "Mobile", val: "Responsive" },
     ],
     features: [
       "Pet adoption with detailed profiles",
@@ -315,7 +372,7 @@ export const projects = [
     duration: "1 month",
   },
   {
-    id: 4,
+    id: 6,
     title: "GameHub",
     cat: "Frontend",
     image: "/gamehub.png",
@@ -334,9 +391,9 @@ export const projects = [
     color: "#8b5cf6",
     cardBg: "rgba(139,92,246,0.1)",
     stats: [
-      { icon: "🎯", label: "Platform", val: "Indie Games" },
-      { icon: "⭐", label: "Features", val: "10+" },
-      { icon: "🚀", label: "Performance", val: "Fast" },
+      { Icon: FiZap, label: "Platform", val: "Indie Games" },
+      { Icon: FiTrendingUp, label: "Features", val: "10+" },
+      { Icon: FiZap, label: "Performance", val: "Fast" },
     ],
     features: [
       "Indie game library with search",

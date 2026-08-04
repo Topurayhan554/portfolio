@@ -16,7 +16,7 @@ import { projects } from "@/data/data";
 
 const categories = ["All", "Full Stack", "Frontend", "Backend", "Mobile"];
 
-/* ── Variants ── */
+/*  Variants  */
 const gridVariants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1 } },
@@ -32,7 +32,7 @@ const cardVariants = {
 };
 
 /* 
-   IMAGE AREA — used in both Card + Modal
+   IMAGE AREA 
  */
 function ProjectImage({
   p,
@@ -79,7 +79,7 @@ function ProjectImage({
     );
   }
 
-  /* ── Watercolor Placeholder (no image) ── */
+  /*  Watercolor Placeholder */
   return (
     <div
       className={`${height} flex items-center justify-center relative overflow-hidden flex-shrink-0`}
@@ -184,10 +184,10 @@ function ProjectCard({ p, onOpen }) {
         }}
       />
 
-      {/* ── IMAGE AREA ── */}
+      {/*  IMAGE AREA  */}
       <ProjectImage p={p} hovered={hovered} height="h-48" />
 
-      {/* ── BODY ── */}
+      {/*  BODY  */}
       <div className="p-5 flex flex-col flex-1">
         <motion.h3
           className="font-display font-bold text-base mb-2"
@@ -334,7 +334,7 @@ function ProjectModal({ project: p, onClose }) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* ── BANNER (tall image or watercolor) ── */}
+        {/*  BANNER  */}
         <div className="relative rounded-t-3xl overflow-hidden">
           {p.image ? (
             /* Real screenshot */
@@ -499,9 +499,9 @@ function ProjectModal({ project: p, onClose }) {
           )}
         </div>
 
-        {/* ── CONTENT ── */}
+        {/*  CONTENT  */}
         <div className="p-7">
-          {/* Title + meta — only show if image exists (title already shown in overlay above) */}
+          {/* Title + meta */}
           {!p.image && (
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -585,9 +585,15 @@ function ProjectModal({ project: p, onClose }) {
                     type: "spring",
                     stiffness: 300,
                   }}
-                  style={{ fontSize: "22px", marginBottom: "4px" }}
+                  style={{
+                    fontSize: "22px",
+                    marginBottom: "4px",
+                    display: "flex",
+                    justifyContent: "center",
+                    color: p.color,
+                  }}
                 >
-                  {s.icon}
+                  <s.Icon size={22} />
                 </motion.div>
                 <div
                   className="font-display font-bold text-base leading-none"
