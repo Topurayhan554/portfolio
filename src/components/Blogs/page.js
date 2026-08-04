@@ -1,38 +1,38 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FaServer, FaReact, FaDatabase } from "react-icons/fa";
+import { FaServer, FaCreditCard, FaDatabase } from "react-icons/fa";
 
 const posts = [
   {
     tag: "Backend",
     Icon: FaServer,
     tagColor: "#818cf8",
-    title: "Building Scalable APIs with Node.js",
+    title: "Why I Skipped the ORM: Raw SQL in DevPulse",
     excerpt:
-      "Production-ready REST APIs with proper error handling, rate limiting, and JWT authentication.",
-    date: "Jan 15, 2025",
-    read: "8 min read",
+      "Building an internal issue tracker on raw pg queries instead of Prisma or Sequelize — role-based access, JWT auth, and what you gain (and lose) writing SQL by hand.",
+    date: "Jun 12, 2026",
+    read: "7 min read",
   },
   {
-    tag: "Frontend",
-    Icon: FaReact,
-    tagColor: "var(--orange)",
-    title: "React Server Components in Next.js 14",
+    tag: "Payments",
+    Icon: FaCreditCard,
+    tagColor: "#f59e0b",
+    title: "Handling Stripe Webhooks in RentNest",
     excerpt:
-      "Everything about RSC, streaming, and the app router to build blazing-fast applications.",
-    date: "Feb 3, 2025",
-    read: "12 min read",
+      "How a rental marketplace moves a booking from pending to active — Stripe Checkout sessions, webhook verification, and keeping request state in sync.",
+    date: "Jul 22, 2026",
+    read: "9 min read",
   },
   {
     tag: "Database",
     Icon: FaDatabase,
     tagColor: "#34d399",
-    title: "Database Design for Modern Web Apps",
+    title: "Designing a Relational Schema for Ticket Booking",
     excerpt:
-      "SQL vs NoSQL, indexing strategies, and Redis caching for peak performance.",
-    date: "Feb 18, 2025",
-    read: "10 min read",
+      "Three tables, clean joins, and seven queries — modeling users, matches, and bookings for a football ticket platform, from ERD to OFFSET/LIMIT pagination.",
+    date: "Aug 1, 2026",
+    read: "6 min read",
   },
 ];
 

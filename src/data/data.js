@@ -280,10 +280,10 @@ export const projects = [
     duration: "2 months",
   },
   {
-    id: 5,
+    id: 3,
     title: "RentNest — Rental Property Marketplace",
     cat: "Full Stack",
-    image: "", // TODO: screenshot path diyo, e.g. "/rentnest.png"
+    image: "/rentnest.png",
     desc: "Full-stack rental property marketplace with role-based access for tenants, landlords, and admins.",
     longDesc:
       "RentNest is a production-style rental property marketplace built as a full-stack assignment. The backend is a modular REST API built with Express, TypeScript, and Prisma ORM on PostgreSQL, covering auth, user, category, property, rental request, payment, review, and admin modules. Implements cookie-based JWT authentication with role-based routing for TENANT, LANDLORD, and ADMIN roles, secure JWT sign options, and a shared payload interface across services. Integrates Stripe for payments with webhook handling. The Next.js frontend uses the App Router with TypeScript, shadcn/ui, and Tailwind CSS, featuring Server Actions, useActionState for form handling, and Suspense with Skeleton loaders for a smooth loading experience. Deployed on Vercel, with backend ESM/TypeScript compilation issues resolved through custom vercel.json rewrites.",
@@ -319,10 +319,10 @@ export const projects = [
       "Admin dashboard for platform management",
       "Multi-file Prisma schema architecture",
     ],
-    liveUrl: "", // TODO: deployed frontend URL
-    apiUrl: "", // TODO: deployed backend URL
-    sourceUrl: "", // TODO: frontend GitHub repo
-    backendRepo: "", // TODO: backend GitHub repo
+    liveUrl: "https://rentnest-frontend-tau.vercel.app",
+    apiUrl: "https://rentnest-backend-rouge.vercel.app/",
+    sourceUrl: "https://github.com/Topurayhan554/rentnest-frontend",
+    backendRepo: "https://github.com/Topurayhan554/rentnest-backend",
     date: "July 2026",
     role: "Full Stack Developer",
     duration: "1 month",
@@ -372,7 +372,7 @@ export const projects = [
     duration: "1 month",
   },
   {
-    id: 6,
+    id: 5,
     title: "GameHub",
     cat: "Frontend",
     image: "/gamehub.png",
@@ -412,6 +412,79 @@ export const projects = [
     sourceUrl: "https://github.com/Topurayhan554/game-hub",
     date: "2024",
     role: "Frontend Developer",
+  },
+  {
+    id: 6,
+    title: "DevPulse — Tech Issue & Feature Tracker",
+    cat: "Backend",
+    image: "/devpulse.png",
+    desc: "Internal issue & feature tracker with JWT auth, role-based access, and raw SQL — no ORM.",
+    longDesc:
+      "DevPulse is a collaborative backend platform for software teams to report bugs, suggest features, and coordinate resolutions. Built with a modular Express + TypeScript architecture on top of PostgreSQL, it uses raw SQL queries via the pg driver instead of an ORM or query builder. Implements JWT-based authentication, bcrypt password hashing, and role-based access control distinguishing Contributors from Maintainers — contributors can create and update their own open issues, while maintainers can update or delete any issue and change its status. Issues can be filtered by type and status and sorted by newest or oldest.",
+    tech: [
+      "Node.js",
+      "TypeScript",
+      "Express.js",
+      "PostgreSQL",
+      "Raw SQL (pg)",
+      "JWT",
+      "bcrypt",
+    ],
+    emoji: "🐞",
+    color: "#6366f1",
+    cardBg: "rgba(99,102,241,0.1)",
+    stats: [
+      { Icon: FiUsers, label: "Roles", val: "2" },
+      { Icon: FiDatabase, label: "Queries", val: "Raw SQL" },
+      { Icon: FiZap, label: "Auth", val: "JWT" },
+    ],
+    features: [
+      "JWT-based authentication",
+      "Role-based access (Contributor, Maintainer)",
+      "Create, view, update, delete issues",
+      "Filter by type & status, sort by newest/oldest",
+      "Raw SQL queries — no ORM",
+      "bcrypt password hashing",
+      "Modular route → controller → service architecture",
+    ],
+    liveUrl: "https://devpulse-api-b7a2.vercel.app/",
+    sourceUrl: "https://github.com/Topurayhan554/devpulse-api-b7a2",
+    date: "TODO — add month/year",
+    role: "Backend Developer",
+    duration: "TODO — add duration",
+  },
+  {
+    id: 7,
+    title: "Football Ticket Booking System",
+    cat: "Backend",
+    image: "/football-ticket-booking.png",
+    desc: "Database design & SQL query assignment for a football match ticket booking platform.",
+    longDesc:
+      "A database design assignment modeling a football ticket booking system with three related tables — users, matches, and bookings — connected through one-to-many relationships (one user to many bookings, many bookings to one match). Includes a full PostgreSQL schema with sample data and seven SQL queries covering filtered lookups, case-insensitive search with ILIKE, NULL handling with COALESCE, multi-table INNER and LEFT JOINs, subqueries for above-average values, and pagination with OFFSET/LIMIT. The entity relationship diagram was designed in Draw.io.",
+    tech: ["PostgreSQL", "SQL (DDL & DML)", "Draw.io"],
+    emoji: "⚽",
+    color: "#ef4444",
+    cardBg: "rgba(239,68,68,0.1)",
+    stats: [
+      { Icon: FiDatabase, label: "Tables", val: "3" },
+      { Icon: FiTrendingUp, label: "Queries", val: "7" },
+      { Icon: FiUsers, label: "Roles", val: "2" },
+    ],
+    features: [
+      "Three-table relational schema (users, matches, bookings)",
+      "One-to-many & many-to-one relationships",
+      "Champions League match filtering by status",
+      "Case-insensitive user search with ILIKE",
+      "NULL payment status handling with COALESCE",
+      "INNER & LEFT JOIN queries across all tables",
+      "Above-average cost subquery",
+      "Pagination with OFFSET & LIMIT",
+    ],
+
+    sourceUrl: "https://github.com/Topurayhan554/football-ticket-booking",
+    date: "TODO — add month/year",
+    role: "Database Designer",
+    duration: "TODO — add duration",
   },
 ];
 
